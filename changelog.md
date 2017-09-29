@@ -8,5 +8,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.0.1] - 2017-06-20
 ### Added
+- Added MapKit to Storyboard Page One and change deployment target to iOS 9.2
 - Initialized project
 - Changelog
