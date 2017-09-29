@@ -15,6 +15,9 @@
 		B91802431F7DD27D000C5246 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B91802411F7DD27D000C5246 /* LaunchScreen.storyboard */; };
 		B918024E1F7DD27D000C5246 /* PreventanylTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B918024D1F7DD27D000C5246 /* PreventanylTests.swift */; };
 		B91802591F7DD27E000C5246 /* PreventanylUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91802581F7DD27E000C5246 /* PreventanylUITests.swift */; };
+		B9B302161F7E1E0300C5FD04 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B302151F7E1E0200C5FD04 /* MapKit.framework */; };
+		B9B302181F7E2B5E00C5FD04 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B302171F7E2B5E00C5FD04 /* Marker.swift */; };
+		B9B3021A1F7E2DF600C5FD04 /* VCMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B302191F7E2DF600C5FD04 /* VCMapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		B91802541F7DD27E000C5246 /* PreventanylUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PreventanylUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B91802581F7DD27E000C5246 /* PreventanylUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreventanylUITests.swift; sourceTree = "<group>"; };
 		B918025A1F7DD27E000C5246 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9B302151F7E1E0200C5FD04 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B9B302171F7E2B5E00C5FD04 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
+		B9B302191F7E2DF600C5FD04 /* VCMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCMapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9B302161F7E1E0300C5FD04 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +90,7 @@
 				B918024C1F7DD27D000C5246 /* PreventanylTests */,
 				B91802571F7DD27E000C5246 /* PreventanylUITests */,
 				B91802341F7DD27D000C5246 /* Products */,
+				B9B302141F7E1E0200C5FD04 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,8 +109,10 @@
 			children = (
 				B91802361F7DD27D000C5246 /* AppDelegate.swift */,
 				B91802381F7DD27D000C5246 /* FirstViewController.swift */,
+				B9B302191F7E2DF600C5FD04 /* VCMapView.swift */,
 				B918023A1F7DD27D000C5246 /* SecondViewController.swift */,
 				B918023C1F7DD27D000C5246 /* Main.storyboard */,
+				B9B302171F7E2B5E00C5FD04 /* Marker.swift */,
 				B918023F1F7DD27D000C5246 /* Assets.xcassets */,
 				B91802411F7DD27D000C5246 /* LaunchScreen.storyboard */,
 				B91802441F7DD27D000C5246 /* Info.plist */,
@@ -126,6 +136,14 @@
 				B918025A1F7DD27E000C5246 /* Info.plist */,
 			);
 			path = PreventanylUITests;
+			sourceTree = "<group>";
+		};
+		B9B302141F7E1E0200C5FD04 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B9B302151F7E1E0200C5FD04 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +281,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B918023B1F7DD27D000C5246 /* SecondViewController.swift in Sources */,
+				B9B302181F7E2B5E00C5FD04 /* Marker.swift in Sources */,
+				B9B3021A1F7E2DF600C5FD04 /* VCMapView.swift in Sources */,
 				B91802371F7DD27D000C5246 /* AppDelegate.swift in Sources */,
 				B91802391F7DD27D000C5246 /* FirstViewController.swift in Sources */,
 			);
@@ -437,6 +457,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = btraas.UnderratedDev.Preventanyl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -453,6 +474,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = btraas.UnderratedDev.Preventanyl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
