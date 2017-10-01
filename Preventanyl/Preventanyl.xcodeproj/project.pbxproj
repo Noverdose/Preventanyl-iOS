@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3948F99A22D290DB8013F79B /* Pods_PreventanylTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51824B95F18CBC5F01C7F1F /* Pods_PreventanylTests.framework */; };
+		690AB7C5F9BDA9BAFDF10D21 /* Pods_Preventanyl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7873F0FCAF97B3677815CF35 /* Pods_Preventanyl.framework */; };
 		B91802371F7DD27D000C5246 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91802361F7DD27D000C5246 /* AppDelegate.swift */; };
 		B91802391F7DD27D000C5246 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91802381F7DD27D000C5246 /* FirstViewController.swift */; };
 		B918023B1F7DD27D000C5246 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B918023A1F7DD27D000C5246 /* SecondViewController.swift */; };
@@ -18,6 +20,7 @@
 		B9B302161F7E1E0300C5FD04 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B302151F7E1E0200C5FD04 /* MapKit.framework */; };
 		B9B302181F7E2B5E00C5FD04 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B302171F7E2B5E00C5FD04 /* Marker.swift */; };
 		B9B3021A1F7E2DF600C5FD04 /* VCMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B302191F7E2DF600C5FD04 /* VCMapView.swift */; };
+		C36F072433169CBA65AC1C96 /* Pods_PreventanylUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B522C0725A95CE8A17B31F3E /* Pods_PreventanylUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22D18AE552F53C8198896ED0 /* Pods-PreventanylUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PreventanylUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PreventanylUITests/Pods-PreventanylUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2B8291CD1080A837462D340C /* Pods-PreventanylUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PreventanylUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PreventanylUITests/Pods-PreventanylUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		41581F8EE851E6AC8575A8D6 /* Pods-PreventanylTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PreventanylTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PreventanylTests/Pods-PreventanylTests.release.xcconfig"; sourceTree = "<group>"; };
+		4A5636996952692FB1C82C9B /* Pods-Preventanyl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preventanyl.release.xcconfig"; path = "Pods/Target Support Files/Pods-Preventanyl/Pods-Preventanyl.release.xcconfig"; sourceTree = "<group>"; };
+		7873F0FCAF97B3677815CF35 /* Pods_Preventanyl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Preventanyl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C18E0A21F889B9D0750E533 /* Pods-PreventanylTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PreventanylTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PreventanylTests/Pods-PreventanylTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B51824B95F18CBC5F01C7F1F /* Pods_PreventanylTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PreventanylTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B522C0725A95CE8A17B31F3E /* Pods_PreventanylUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PreventanylUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B91802331F7DD27D000C5246 /* Preventanyl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Preventanyl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B91802361F7DD27D000C5246 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B91802381F7DD27D000C5246 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +66,8 @@
 		B9B302151F7E1E0200C5FD04 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B9B302171F7E2B5E00C5FD04 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		B9B302191F7E2DF600C5FD04 /* VCMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCMapView.swift; sourceTree = "<group>"; };
+		B9D516261F8068C4008022AD /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F4B55DF2D8CB76D2E4F55FD0 /* Pods-Preventanyl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preventanyl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Preventanyl/Pods-Preventanyl.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +76,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9B302161F7E1E0300C5FD04 /* MapKit.framework in Frameworks */,
+				690AB7C5F9BDA9BAFDF10D21 /* Pods_Preventanyl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3948F99A22D290DB8013F79B /* Pods_PreventanylTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,12 +92,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C36F072433169CBA65AC1C96 /* Pods_PreventanylUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E2245C11F219F9B94C8D0AA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F4B55DF2D8CB76D2E4F55FD0 /* Pods-Preventanyl.debug.xcconfig */,
+				4A5636996952692FB1C82C9B /* Pods-Preventanyl.release.xcconfig */,
+				9C18E0A21F889B9D0750E533 /* Pods-PreventanylTests.debug.xcconfig */,
+				41581F8EE851E6AC8575A8D6 /* Pods-PreventanylTests.release.xcconfig */,
+				2B8291CD1080A837462D340C /* Pods-PreventanylUITests.debug.xcconfig */,
+				22D18AE552F53C8198896ED0 /* Pods-PreventanylUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B918022A1F7DD27D000C5246 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +120,7 @@
 				B91802571F7DD27E000C5246 /* PreventanylUITests */,
 				B91802341F7DD27D000C5246 /* Products */,
 				B9B302141F7E1E0200C5FD04 /* Frameworks */,
+				7E2245C11F219F9B94C8D0AA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,6 +137,7 @@
 		B91802351F7DD27D000C5246 /* Preventanyl */ = {
 			isa = PBXGroup;
 			children = (
+				B9D516261F8068C4008022AD /* GoogleService-Info.plist */,
 				B91802361F7DD27D000C5246 /* AppDelegate.swift */,
 				B91802381F7DD27D000C5246 /* FirstViewController.swift */,
 				B9B302191F7E2DF600C5FD04 /* VCMapView.swift */,
@@ -142,6 +173,9 @@
 			isa = PBXGroup;
 			children = (
 				B9B302151F7E1E0200C5FD04 /* MapKit.framework */,
+				7873F0FCAF97B3677815CF35 /* Pods_Preventanyl.framework */,
+				B51824B95F18CBC5F01C7F1F /* Pods_PreventanylTests.framework */,
+				B522C0725A95CE8A17B31F3E /* Pods_PreventanylUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -153,9 +187,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B918025D1F7DD27E000C5246 /* Build configuration list for PBXNativeTarget "Preventanyl" */;
 			buildPhases = (
+				9DCCC0B7D8F25F243C45ABD1 /* [CP] Check Pods Manifest.lock */,
 				B918022F1F7DD27D000C5246 /* Sources */,
 				B91802301F7DD27D000C5246 /* Frameworks */,
 				B91802311F7DD27D000C5246 /* Resources */,
+				535F052920874F3DCEB2BFC1 /* [CP] Embed Pods Frameworks */,
+				7A84E854DE30FD0112E10B32 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,9 +207,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B91802601F7DD27E000C5246 /* Build configuration list for PBXNativeTarget "PreventanylTests" */;
 			buildPhases = (
+				BD9C1939E68018B582793594 /* [CP] Check Pods Manifest.lock */,
 				B91802451F7DD27D000C5246 /* Sources */,
 				B91802461F7DD27D000C5246 /* Frameworks */,
 				B91802471F7DD27D000C5246 /* Resources */,
+				A814D453D972A4A1E0A9673C /* [CP] Embed Pods Frameworks */,
+				0533496F89E4FA058EFFBAE4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -188,9 +228,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B91802631F7DD27E000C5246 /* Build configuration list for PBXNativeTarget "PreventanylUITests" */;
 			buildPhases = (
+				216128E092BBDFDBD1FF05C9 /* [CP] Check Pods Manifest.lock */,
 				B91802501F7DD27E000C5246 /* Sources */,
 				B91802511F7DD27E000C5246 /* Frameworks */,
 				B91802521F7DD27E000C5246 /* Resources */,
+				7355891E00BBF6C336A8BD1E /* [CP] Embed Pods Frameworks */,
+				1C8C6997FA48373D3BB92FEE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -274,6 +317,158 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0533496F89E4FA058EFFBAE4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PreventanylTests/Pods-PreventanylTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1C8C6997FA48373D3BB92FEE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PreventanylUITests/Pods-PreventanylUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		216128E092BBDFDBD1FF05C9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PreventanylUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		535F052920874F3DCEB2BFC1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Preventanyl/Pods-Preventanyl-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Preventanyl/Pods-Preventanyl-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7355891E00BBF6C336A8BD1E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PreventanylUITests/Pods-PreventanylUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A84E854DE30FD0112E10B32 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Preventanyl/Pods-Preventanyl-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9DCCC0B7D8F25F243C45ABD1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Preventanyl-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A814D453D972A4A1E0A9673C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PreventanylTests/Pods-PreventanylTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD9C1939E68018B582793594 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PreventanylTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B918022F1F7DD27D000C5246 /* Sources */ = {
@@ -448,14 +643,15 @@
 		};
 		B918025E1F7DD27E000C5246 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4B55DF2D8CB76D2E4F55FD0 /* Pods-Preventanyl.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XLXWXYEM49;
+				DEVELOPMENT_TEAM = N6RP3H788Z;
 				INFOPLIST_FILE = Preventanyl/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = btraas.UnderratedDev.Preventanyl;
+				PRODUCT_BUNDLE_IDENTIFIER = Underrateddev.Preventanyl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 4.0;
@@ -465,14 +661,15 @@
 		};
 		B918025F1F7DD27E000C5246 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A5636996952692FB1C82C9B /* Pods-Preventanyl.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XLXWXYEM49;
+				DEVELOPMENT_TEAM = N6RP3H788Z;
 				INFOPLIST_FILE = Preventanyl/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = btraas.UnderratedDev.Preventanyl;
+				PRODUCT_BUNDLE_IDENTIFIER = Underrateddev.Preventanyl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 4.0;
@@ -482,6 +679,7 @@
 		};
 		B91802611F7DD27E000C5246 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C18E0A21F889B9D0750E533 /* Pods-PreventanylTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -499,6 +697,7 @@
 		};
 		B91802621F7DD27E000C5246 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41581F8EE851E6AC8575A8D6 /* Pods-PreventanylTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -516,6 +715,7 @@
 		};
 		B91802641F7DD27E000C5246 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B8291CD1080A837462D340C /* Pods-PreventanylUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -532,6 +732,7 @@
 		};
 		B91802651F7DD27E000C5246 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22D18AE552F53C8198896ED0 /* Pods-PreventanylUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
