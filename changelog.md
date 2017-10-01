@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+## 8b3121ac810fbcef7e433a35cc6bd63cd86a68c7 - 2017-09-30 - Yudhvir
+- Fixed SigAbrt Error caused by not finding Google Services Plist file, simply changed the membership
 
 ## ff7c99d1db0649fb5d8736e721e546f5246442e1 - 2017-09-30 - Yudhvir
 - Initiliased pod and created podfile
