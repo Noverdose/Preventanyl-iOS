@@ -20,6 +20,7 @@
 		B9B302161F7E1E0300C5FD04 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B302151F7E1E0200C5FD04 /* MapKit.framework */; };
 		B9B302181F7E2B5E00C5FD04 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B302171F7E2B5E00C5FD04 /* Marker.swift */; };
 		B9B3021A1F7E2DF600C5FD04 /* VCMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B302191F7E2DF600C5FD04 /* VCMapView.swift */; };
+		B9EF1F831F806C0E00BFA925 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9D516261F8068C4008022AD /* GoogleService-Info.plist */; };
 		C36F072433169CBA65AC1C96 /* Pods_PreventanylUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B522C0725A95CE8A17B31F3E /* Pods_PreventanylUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -297,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B91802431F7DD27D000C5246 /* LaunchScreen.storyboard in Resources */,
+				B9EF1F831F806C0E00BFA925 /* GoogleService-Info.plist in Resources */,
 				B91802401F7DD27D000C5246 /* Assets.xcassets in Resources */,
 				B918023E1F7DD27D000C5246 /* Main.storyboard in Resources */,
 			);
