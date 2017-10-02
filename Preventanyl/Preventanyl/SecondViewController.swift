@@ -19,6 +19,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
         username.layer.borderColor = myColor.cgColor
         
         self.username.delegate = self
+        self.password.delegate = self
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -28,6 +29,19 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+    
+    func performLogin() {
+
+        let messageString = "Not Yet Implemented!"
+        
+        let alertController = UIAlertController(title: "Login Failed", message:
+            messageString, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
     
     @IBAction func editChanged(_ sender: UITextField) {
         print("editChanged")
@@ -45,19 +59,35 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
     }
     
     
- func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         //textField code
         print("textFieldShouldReturn")
         
         textField.resignFirstResponder()  //if desired
-        self.password.becomeFirstResponder()
+        
+        switch textField
+        {
+            case username   : password.becomeFirstResponder()
+            case password   :
+                textField.endEditing(true)
+                performLogin()
+            default         : textField.endEditing(true)
+        }
+        
+        //self.password.becomeFirstResponder()
         return true
     }
     
     @IBOutlet var username: UITextField!
     
     @IBOutlet var password: UITextField!
+    
+    @IBAction func loginClick(_ sender: Any) {
+        performLogin()
+    }
     
 }
 
