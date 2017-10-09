@@ -8,18 +8,72 @@
 
 import UIKit
 import MapKit
+import CoreLocation
+import UserNotifications
 import Firebase
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
-
+    let locationManager = CLLocationManager ()
+    let center = UNUserNotificationCenter.current()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        // application.registerUserNotificationSettings (UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
+        // UIApplication.shared.cancelAllLocalNotifications ()
+        
+        // Override point for customization after application launch.
+        // let center = UNUserNotificationCenter.current()
+        UNUserNotificationCenter.current().delegate = self
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            // Enable or disable features based on authorization.
+            if((error != nil)) {
+                print("Request authorization failed!")
+            } else {
+                print("Request authorization succeeded!")
+                self.locationManager.requestLocation()
+            }
+        }
         return true
+    }
+    
+    func userNotificationCenter(_: UNUserNotificationCenter, willPresent _: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+    {
+        completionHandler([.alert, .sound])
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
+    {
+        switch status
+        {
+        case .authorizedAlways:
+            print("always")
+            locationManager.requestLocation()
+        case .authorizedWhenInUse:
+            print("when in use")
+            locationManager.requestLocation()
+        case .denied:
+            print("denied")
+        case .notDetermined:
+            print("not determined")
+        case .restricted:
+            print("restricted")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        print(locations)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
+    {
+        print("error: \(error.localizedDescription)")
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
