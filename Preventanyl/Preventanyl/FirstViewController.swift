@@ -8,23 +8,41 @@
 
 import UIKit
 import MapKit
+import CoreLocation
+import UserNotifications
 
 class FirstViewController: UIViewController {
 
     @IBOutlet weak var MapView: MKMapView!
     
+    // Gets app delegate for use of its helper functions (usages such as location)
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // set initlial location in Honolulu
-        let initialLocation = CLLocation(latitude: 21.28778, longitude: -157.829444)
-        centerMapOnLocation (location: initialLocation)
-        let marker = Marker (title: "Marker",
+        // let initialLocation = CLLocation(latitude: 21.28778, longitude: -157.829444)
+        appDelegate.locationManager.requestWhenInUseAuthorization()
+        appDelegate.locationManager.requestLocation()
+        var coord: CLLocationCoordinate2D!
+        coord = appDelegate.locationManager.location?.coordinate
+        if (coord != nil) {
+            let initialLocation = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
+            let marker = Marker (title: "Marker",
+                                 locationName:"User Position",
+                                 discipline: "You",
+                                 coordinate: CLLocationCoordinate2D(latitude: coord.latitude, longitude: coord.longitude))
+            centerMapOnLocation (location: initialLocation)
+            MapView.addAnnotation (marker)
+        }
+        
+        
+        /* let marker = Marker (title: "Marker",
                              locationName:"Waikiki Gateway Park",
                              discipline: "Sculpture",
-                             coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661))
+                             coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661)) */
         
-        MapView.addAnnotation (marker)
     }
 
     override func didReceiveMemoryWarning() {

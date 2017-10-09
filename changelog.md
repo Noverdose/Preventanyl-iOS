@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+## - 2017-09-30 - Yudhvir, Stephen
+- Zoom on user position on Launch, implemented location manager in app delegate using stephen's git repo
+
 ## 8b3121ac810fbcef7e433a35cc6bd63cd86a68c7 - 2017-09-30 - Yudhvir
 - Fixed SigAbrt Error caused by not finding Google Services Plist file, simply changed the membership
 
