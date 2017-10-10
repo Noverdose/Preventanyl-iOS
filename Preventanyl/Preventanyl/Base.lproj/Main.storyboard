@@ -18,12 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YyW-VW-avx">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YyW-VW-avx">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="YyW-VW-avx" secondAttribute="trailing" id="JBN-2T-0tU"/>
+                            <constraint firstItem="YyW-VW-avx" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="Y9f-Z7-7bb"/>
+                            <constraint firstItem="YyW-VW-avx" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="hRB-eS-hsn"/>
+                            <constraint firstItem="YyW-VW-avx" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="i3i-ts-fdF"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" id="acW-dT-cKf"/>
