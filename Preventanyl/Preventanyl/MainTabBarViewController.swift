@@ -18,6 +18,7 @@ class MainTabBarViewController: UITabBarController{
         self.delegate = self as? UITabBarControllerDelegate
         
         
+        
         // Do any additional setup after loading the view.
     }
 
@@ -29,18 +30,29 @@ class MainTabBarViewController: UITabBarController{
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if let selectedTabInt = item.title  {
             print(selectedTabInt)
-            if(selectedTabInt == "test") {
-                
-                let defaults = UserDefaults.standard
-                let token = defaults.bool(forKey: "isLogin")
-                
-                if(token) {
-                    
-                } else {
-                    
-                }
-                
-            }
+//            if(selectedTabInt == "Profile") {
+//
+//                let defaults = UserDefaults.standard
+//                let token = defaults.bool(forKey: "isLogin")
+//
+//                if(token == true) {
+//                    let profileNavigationController = self.selectedViewController as? UINavigationController
+//
+//                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//
+//                    let secondviewController = storyBoard.instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
+//                    profileNavigationController?.setViewControllers([secondviewController as UIViewController], animated: true)
+//                } else {
+//                    let profileNavigationController = self.selectedViewController as? UINavigationController
+//
+//                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//
+//                    let usermenuviewController = storyBoard.instantiateViewController(withIdentifier: "UserMenuViewController") as! UserMenuViewController
+//                    profileNavigationController?.setViewControllers([usermenuviewController as UIViewController], animated: true)
+//
+//                }
+            
+ //s           }
         }
     }
     

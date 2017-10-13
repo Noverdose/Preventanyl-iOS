@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccountMenuViewController: UIViewController {
+class UserMenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
