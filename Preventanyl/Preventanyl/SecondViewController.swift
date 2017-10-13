@@ -3,13 +3,21 @@
 //  Preventanyl
 //
 //  Created by Yudhvir Raj on 2017-09-28.
-//  Copyright © 2017 Yudhvir Raj. All rights reserved.
+//  Copyright © 2017 Noverdose. All rights reserved.
 //
 
 import UIKit
 
 class SecondViewController: UIViewController, UITextFieldDelegate {
 
+    static let MODE_REGISTER = 0
+    static let MODE_LOGIN    = 1
+    
+    var currentMode: Int = MODE_REGISTER // = MODE_REGISTER
+    
+    @IBOutlet var registerLoginLabel: UILabel!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,9 +27,16 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
         username.layer.borderColor = myColor.cgColor
         
         self.username.delegate = self
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "profile.png")
+        self.username.leftView = imageView
+        
         self.password.delegate = self
         
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.currentMode = SecondViewController.MODE_REGISTER
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,19 +44,36 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    
-    func performLogin() {
-
-        let messageString = "Not Yet Implemented!"
+    func notImplemented(actionName: String) {
+        let messageString = actionName + " Not Yet Implemented!"
         
         let alertController = UIAlertController(title: "Login Failed", message:
             messageString, preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func performLogin() {
+
+        notImplemented(actionName: "login")
         
     }
     
+    @IBAction func registerLoginChanged(_ segmentedControl: UISegmentedControl) {
+        
+        switch segmentedControl.selectedSegmentIndex
+        {
+        case SecondViewController.MODE_REGISTER  :
+            currentMode = SecondViewController.MODE_REGISTER
+            registerLoginLabel.text = "Register"
+        case SecondViewController.MODE_LOGIN     :
+            currentMode = SecondViewController.MODE_LOGIN
+            registerLoginLabel.text = "Login"
+        default: notImplemented(actionName: "UnknownOption")
+        }
+        
+    }
     
     @IBAction func editChanged(_ sender: UITextField) {
         print("editChanged")
