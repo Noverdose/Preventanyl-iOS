@@ -120,10 +120,10 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginClick(_ sender: UIButton) {
             //performLogin()
             if(currentMode == SecondViewController.MODE_LOGIN) {
-            print("loginClick")
-            Userinfo.islogin = true
-            let navControllerArr = [(storyboard?.instantiateViewController(withIdentifier: "UserMenuViewController"))!]
-            navigationController?.setViewControllers(navControllerArr, animated: true)
+                print("loginClick")
+                Userinfo.islogin = true
+                let navControllerArr = [(storyboard?.instantiateViewController(withIdentifier: "UserMenuViewController"))!]
+                navigationController?.setViewControllers(navControllerArr, animated: true)
             }
         
         

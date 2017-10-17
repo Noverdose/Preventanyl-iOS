@@ -15,7 +15,7 @@ struct Userinfo {
     
     public static var islogin: Bool {
         set{
-            defaults.set(newValue, forKey: "isogin")
+            defaults.set(newValue, forKey: "islogin")
             defaults.synchronize()
         } get {
             return defaults.bool(forKey: "islogin")
