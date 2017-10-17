@@ -27,6 +27,15 @@ class AccountUINavigaionController: UINavigationController {
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let islog = Userinfo.islogin
+        if(islog) {
+            performSegue(withIdentifier: "UserMenuSegue", sender: self)
+        } else{
+            performSegue(withIdentifier: "RegisterSegue", sender: self)
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

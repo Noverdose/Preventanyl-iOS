@@ -16,6 +16,13 @@ class UserMenuViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func logoff(_ sender: UIButton) {
+        Userinfo.islogin = false
+        //get the current navigation stack array
+        let navControllerArr = [(storyboard?.instantiateViewController(withIdentifier: "SecondViewController"))!]
+        //perform the view switch
+        navigationController?.setViewControllers(navControllerArr, animated: true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
