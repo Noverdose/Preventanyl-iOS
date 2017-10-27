@@ -20,7 +20,8 @@ class FirstViewController: UIViewController {
     
     var observer:  NSObjectProtocol?
     
-    
+    var marker: Marker?
+    var annotation: MKPointAnnotation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +39,18 @@ class FirstViewController: UIViewController {
         var coord: CLLocationCoordinate2D!
         coord = appDelegate.locationManager.location?.coordinate
         if (coord != nil) {
-            let initialLocation = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
-            updateUserLocation(location: initialLocation)
+            let location = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
+        
+//            marker = Marker (title: "Marker",
+//                                 locationName:"User Position",
+//                                 discipline: "You",
+//                                 coordinate: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude:  location.coordinate.longitude))
+
+            annotation = MKPointAnnotation()
+            annotation?.coordinate = coord
+            
+            centerMapOnLocation (location: location)
+            MapView.addAnnotation (annotation!)
         }
         
         
@@ -54,12 +65,19 @@ class FirstViewController: UIViewController {
     func updateUserLocation(location: CLLocation) {
         
         
-        let marker = Marker (title: "Marker",
-                             locationName:"User Position",
-                             discipline: "You",
-                             coordinate: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
-        centerMapOnLocation (location: location)
-        MapView.addAnnotation (marker)
+//        let marker = Marker (title: "Marker",
+//                             locationName:"User Position",
+//                             discipline: "You",
+//                             coordinate: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
+//        centerMapOnLocation (location: location)
+//        MapView.addAnnotation (marker)
+
+        if self.annotation != nil {
+            self.annotation!.coordinate = location.coordinate
+        
+        }
+        
+    
     }
     
     let regionRadius: CLLocationDistance = 1000
