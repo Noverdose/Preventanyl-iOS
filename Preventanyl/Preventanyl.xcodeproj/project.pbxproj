@@ -14,6 +14,8 @@
 		4789182B1F90B3A200450F21 /* UserMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478918291F90B3A200450F21 /* UserMenuViewController.swift */; };
 		4789182C1F90B3A200450F21 /* AccountMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4789182A1F90B3A200450F21 /* AccountMenuViewController.xib */; };
 		478918321F90B49B00450F21 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478918311F90B49B00450F21 /* MainTabBarViewController.swift */; };
+		546AEEE61FA3EC92007DD24B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546AEEE41FA3EC92007DD24B /* Location.swift */; };
+		546AEEE71FA3EC92007DD24B /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546AEEE51FA3EC92007DD24B /* Notifications.swift */; };
 		B4EC6221E230C1797C3656F6 /* Pods_PreventanylTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8728B3CC60D9D5827F780470 /* Pods_PreventanylTests.framework */; };
 		B91802371F7DD27D000C5246 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91802361F7DD27D000C5246 /* AppDelegate.swift */; };
 		B91802391F7DD27D000C5246 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91802381F7DD27D000C5246 /* FirstViewController.swift */; };
@@ -58,6 +60,8 @@
 		478918291F90B3A200450F21 /* UserMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuViewController.swift; sourceTree = "<group>"; };
 		4789182A1F90B3A200450F21 /* AccountMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountMenuViewController.xib; sourceTree = "<group>"; };
 		478918311F90B49B00450F21 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		546AEEE41FA3EC92007DD24B /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		546AEEE51FA3EC92007DD24B /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		8728B3CC60D9D5827F780470 /* Pods_PreventanylTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PreventanylTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		877291257C4FE5222F505AE9 /* Pods-Preventanyl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preventanyl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Preventanyl/Pods-Preventanyl.debug.xcconfig"; sourceTree = "<group>"; };
 		A29B8ADB64CEFA225F9029EF /* Pods_PreventanylUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PreventanylUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +167,8 @@
 		B91802351F7DD27D000C5246 /* Preventanyl */ = {
 			isa = PBXGroup;
 			children = (
+				546AEEE41FA3EC92007DD24B /* Location.swift */,
+				546AEEE51FA3EC92007DD24B /* Notifications.swift */,
 				478918241F90AC9800450F21 /* AccountTab */,
 				B9D516261F8068C4008022AD /* GoogleService-Info.plist */,
 				B91802361F7DD27D000C5246 /* AppDelegate.swift */,
@@ -512,6 +518,8 @@
 			files = (
 				475E5DEA1F9166A300CF82E0 /* Userinfo.swift in Sources */,
 				B918023B1F7DD27D000C5246 /* SecondViewController.swift in Sources */,
+				546AEEE71FA3EC92007DD24B /* Notifications.swift in Sources */,
+				546AEEE61FA3EC92007DD24B /* Location.swift in Sources */,
 				B9B302181F7E2B5E00C5FD04 /* Marker.swift in Sources */,
 				478918271F90ACFF00450F21 /* AccountUINavigaionController.swift in Sources */,
 				478918321F90B49B00450F21 /* MainTabBarViewController.swift in Sources */,
