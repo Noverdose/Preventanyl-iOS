@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         let elapsed = time.timeIntervalSince(startTime2) // Calculating time interval between first and second (previously saved) locations timestamps.
         
-        if elapsed > 1 { //If time interval is more than 10 seconds
+        if elapsed > 1 { //If time interval is more than 1 second
             print("Received location from device")
             Location.updateUser(location: loc) //user function which uploads user location or coordinate to server.
             
