@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0C29DBB40B8B6DE089A2F663 /* Pods_Preventanyl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14457CE3F8010DB4C44A79C9 /* Pods_Preventanyl.framework */; };
+		546AEEDF1FA29984007DD24B /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546AEEDE1FA29984007DD24B /* TabController.swift */; };
+		546AEEE11FA29B1B007DD24B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546AEEE01FA29B1B007DD24B /* Location.swift */; };
+		546AEEE31FA2A36D007DD24B /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546AEEE21FA2A36D007DD24B /* Notifications.swift */; };
 		B4EC6221E230C1797C3656F6 /* Pods_PreventanylTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8728B3CC60D9D5827F780470 /* Pods_PreventanylTests.framework */; };
 		B91802371F7DD27D000C5246 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91802361F7DD27D000C5246 /* AppDelegate.swift */; };
 		B91802391F7DD27D000C5246 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91802381F7DD27D000C5246 /* FirstViewController.swift */; };
@@ -46,6 +49,9 @@
 		1E08E399C0D5022E8463E93E /* Pods-PreventanylTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PreventanylTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PreventanylTests/Pods-PreventanylTests.release.xcconfig"; sourceTree = "<group>"; };
 		2B7ACE4F5776D70A1A65F6D5 /* Pods-PreventanylUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PreventanylUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PreventanylUITests/Pods-PreventanylUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4229B2F3013863BAC57EC9D6 /* Pods-PreventanylTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PreventanylTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PreventanylTests/Pods-PreventanylTests.debug.xcconfig"; sourceTree = "<group>"; };
+		546AEEDE1FA29984007DD24B /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
+		546AEEE01FA29B1B007DD24B /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		546AEEE21FA2A36D007DD24B /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		54F263611F8D97A500A5D1B6 /* Preventanyl.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Preventanyl.entitlements; sourceTree = "<group>"; };
 		8728B3CC60D9D5827F780470 /* Pods_PreventanylTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PreventanylTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		877291257C4FE5222F505AE9 /* Pods-Preventanyl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preventanyl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Preventanyl/Pods-Preventanyl.debug.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +156,9 @@
 				B918023F1F7DD27D000C5246 /* Assets.xcassets */,
 				B91802411F7DD27D000C5246 /* LaunchScreen.storyboard */,
 				B91802441F7DD27D000C5246 /* Info.plist */,
+				546AEEDE1FA29984007DD24B /* TabController.swift */,
+				546AEEE01FA29B1B007DD24B /* Location.swift */,
+				546AEEE21FA2A36D007DD24B /* Notifications.swift */,
 			);
 			path = Preventanyl;
 			sourceTree = "<group>";
@@ -262,6 +271,9 @@
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -484,11 +496,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				546AEEE31FA2A36D007DD24B /* Notifications.swift in Sources */,
 				B918023B1F7DD27D000C5246 /* SecondViewController.swift in Sources */,
+				546AEEDF1FA29984007DD24B /* TabController.swift in Sources */,
 				B9B302181F7E2B5E00C5FD04 /* Marker.swift in Sources */,
 				B9B3021A1F7E2DF600C5FD04 /* VCMapView.swift in Sources */,
 				B91802371F7DD27D000C5246 /* AppDelegate.swift in Sources */,
 				B91802391F7DD27D000C5246 /* FirstViewController.swift in Sources */,
+				546AEEE11FA29B1B007DD24B /* Location.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,7 +676,7 @@
 				INFOPLIST_FILE = Preventanyl/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = noverdose.Preventanyl;
+				PRODUCT_BUNDLE_IDENTIFIER = underrateddev.Preventanyl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 4.0;
@@ -680,7 +695,7 @@
 				INFOPLIST_FILE = Preventanyl/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = noverdose.Preventanyl;
+				PRODUCT_BUNDLE_IDENTIFIER = underrateddev.Preventanyl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 4.0;

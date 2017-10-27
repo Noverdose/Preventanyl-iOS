@@ -18,23 +18,28 @@ class FirstViewController: UIViewController {
     // Gets app delegate for use of its helper functions (usages such as location)
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    var observer:  NSObjectProtocol?
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // set initlial location in Honolulu
         // let initialLocation = CLLocation(latitude: 21.28778, longitude: -157.829444)
+        
+        
+        observer = Notifications.addObserver(messageName: Location.LOCATION_CHANGED, object: nil) { _ in
+            self.updateUserLocation(location: Location.currentLocation)
+        }
+        
         appDelegate.locationManager.requestWhenInUseAuthorization()
         appDelegate.locationManager.requestLocation()
         var coord: CLLocationCoordinate2D!
         coord = appDelegate.locationManager.location?.coordinate
         if (coord != nil) {
             let initialLocation = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
-            let marker = Marker (title: "Marker",
-                                 locationName:"User Position",
-                                 discipline: "You",
-                                 coordinate: CLLocationCoordinate2D(latitude: coord.latitude, longitude: coord.longitude))
-            centerMapOnLocation (location: initialLocation)
-            MapView.addAnnotation (marker)
+            updateUserLocation(location: initialLocation)
         }
         
         
@@ -43,11 +48,18 @@ class FirstViewController: UIViewController {
                              discipline: "Sculpture",
                              coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661)) */
         
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func updateUserLocation(location: CLLocation) {
+        
+        
+        let marker = Marker (title: "Marker",
+                             locationName:"User Position",
+                             discipline: "You",
+                             coordinate: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
+        centerMapOnLocation (location: location)
+        MapView.addAnnotation (marker)
     }
     
     let regionRadius: CLLocationDistance = 1000

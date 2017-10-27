@@ -10,8 +10,28 @@ import UIKit
 
 class SecondViewController: UIViewController, UITextFieldDelegate {
 
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     static let MODE_REGISTER = 0
     static let MODE_LOGIN    = 1
+    
+    @IBOutlet var trackMeAlwaysButton: UIButton!
+    @IBAction func trackMeAlwaysClick(_ sender: Any) {
+        appDelegate.locationManager.requestAlwaysAuthorization()
+    }
+    
+    @IBOutlet var trackMeAlwaysSwitch: UISwitch!
+    
+    @IBAction func trackSwitchClick(_ trackTest: UISwitch) {
+        UserDefaults.standard.set(trackTest.isOn, forKey: Location.TRACK_ME_AT_ALL_TIMES)
+        if(trackTest.isOn) {
+            Location.startLocationUpdatesAlways(caller: self)
+        } else {
+            Location.stopBackgroundUpdates()
+            Location.startLocationUpdatesWhenInUse()
+        }
+    }
+    
     
     var currentMode: Int = MODE_REGISTER // = MODE_REGISTER
     
@@ -37,12 +57,17 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
         
         self.currentMode = SecondViewController.MODE_REGISTER
         
+        
+        if UserDefaults.standard.bool(forKey: Location.TRACK_ME_AT_ALL_TIMES) {
+            trackMeAlwaysSwitch.setOn(true, animated: false)
+        } else {
+            trackMeAlwaysSwitch.setOn(false, animated: false)
+        }
+        
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
 
     func notImplemented(actionName: String) {
         let messageString = actionName + " Not Yet Implemented!"
