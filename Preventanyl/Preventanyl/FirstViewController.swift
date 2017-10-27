@@ -20,7 +20,9 @@ class FirstViewController: UIViewController {
     
     var observer:  NSObjectProtocol?
     
-    var marker: Marker?
+    var centered: Bool = false
+    
+    //var marker: Marker?
     var annotation: MKPointAnnotation?
     
     override func viewDidLoad() {
@@ -64,6 +66,10 @@ class FirstViewController: UIViewController {
 
     func updateUserLocation(location: CLLocation) {
         
+        if !centered {
+            centerMapOnLocation(location: location)
+        }
+        centered = true
         
 //        let marker = Marker (title: "Marker",
 //                             locationName:"User Position",
