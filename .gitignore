@@ -105,3 +105,17 @@ fastlane/test_output
 /*.gcno
 
 # End of https://www.gitignore.io/api/macos,swift,xcode
+
+
+# Created by https://www.gitignore.io/api/firebase
+
+### Firebase ###
+.idea
+**/node_modules/*
+**/.firebaserc
+# End of https://www.gitignore.io/api/firebase
+
+### Firebase console connection ###
+GoogleService-Info.plist
+
+

@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Preventanyl/Base.lproj/Main.storyboard">
+   </FileRef>
+   <FileRef
       location = "group:Preventanyl.xcodeproj">
    </FileRef>
    <FileRef

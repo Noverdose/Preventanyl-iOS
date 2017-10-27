@@ -1,7 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+The format is based on [Keep a Changelog](	)
+
+
+## -2017-10-27 - Brayden Traas
+- Added in-app, background, and OS-triggered location tracking switched by a switch.
+- Fixed Profile image
+- Removed unnecessary tab items
+- Minor styling and map updates
+
+## - 2017-10-17 - Kent Huang
+- Moved the profile tab into a separate folder
+- Implemented the basic profile tab navgation(segue)
 ## - 2017-09-30 - Yudhvir, Stephen
 - Zoom on user position on Launch, implemented location manager in app delegate using stephen's git repo
 

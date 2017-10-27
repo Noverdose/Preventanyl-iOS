@@ -113,6 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 //            Location.startLocationUpdatesWhenInUse()
 //        }
         
+        UserDefaults.standard.synchronize();
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
