@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C29DBB40B8B6DE089A2F663 /* Pods_Preventanyl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14457CE3F8010DB4C44A79C9 /* Pods_Preventanyl.framework */; };
+		4745D62F1FA5378D00CD90C1 /* StaticKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4745D62E1FA5378D00CD90C1 /* StaticKit.swift */; };
 		475E5DEA1F9166A300CF82E0 /* Userinfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475E5DE91F9166A300CF82E0 /* Userinfo.swift */; };
 		478918271F90ACFF00450F21 /* AccountUINavigaionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478918251F90ACFF00450F21 /* AccountUINavigaionController.swift */; };
 		478918281F90ACFF00450F21 /* AccountUINavigaionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 478918261F90ACFF00450F21 /* AccountUINavigaionController.xib */; };
@@ -54,6 +55,7 @@
 		1E08E399C0D5022E8463E93E /* Pods-PreventanylTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PreventanylTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PreventanylTests/Pods-PreventanylTests.release.xcconfig"; sourceTree = "<group>"; };
 		2B7ACE4F5776D70A1A65F6D5 /* Pods-PreventanylUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PreventanylUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PreventanylUITests/Pods-PreventanylUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4229B2F3013863BAC57EC9D6 /* Pods-PreventanylTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PreventanylTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PreventanylTests/Pods-PreventanylTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4745D62E1FA5378D00CD90C1 /* StaticKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticKit.swift; sourceTree = "<group>"; };
 		475E5DE91F9166A300CF82E0 /* Userinfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Userinfo.swift; sourceTree = "<group>"; };
 		478918251F90ACFF00450F21 /* AccountUINavigaionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountUINavigaionController.swift; sourceTree = "<group>"; };
 		478918261F90ACFF00450F21 /* AccountUINavigaionController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountUINavigaionController.xib; sourceTree = "<group>"; };
@@ -129,6 +131,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		4745D62D1FA5376000CD90C1 /* FirebaseObject */ = {
+			isa = PBXGroup;
+			children = (
+				4745D62E1FA5378D00CD90C1 /* StaticKit.swift */,
+			);
+			path = FirebaseObject;
+			sourceTree = "<group>";
+		};
 		478918241F90AC9800450F21 /* AccountTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +177,7 @@
 		B91802351F7DD27D000C5246 /* Preventanyl */ = {
 			isa = PBXGroup;
 			children = (
+				4745D62D1FA5376000CD90C1 /* FirebaseObject */,
 				546AEEE41FA3EC92007DD24B /* Location.swift */,
 				546AEEE51FA3EC92007DD24B /* Notifications.swift */,
 				478918241F90AC9800450F21 /* AccountTab */,
@@ -397,12 +408,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Preventanyl/Pods-Preventanyl-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,6 +537,7 @@
 				546AEEE61FA3EC92007DD24B /* Location.swift in Sources */,
 				B9B302181F7E2B5E00C5FD04 /* Marker.swift in Sources */,
 				478918271F90ACFF00450F21 /* AccountUINavigaionController.swift in Sources */,
+				4745D62F1FA5378D00CD90C1 /* StaticKit.swift in Sources */,
 				478918321F90B49B00450F21 /* MainTabBarViewController.swift in Sources */,
 				B9B3021A1F7E2DF600C5FD04 /* VCMapView.swift in Sources */,
 				B91802371F7DD27D000C5246 /* AppDelegate.swift in Sources */,
