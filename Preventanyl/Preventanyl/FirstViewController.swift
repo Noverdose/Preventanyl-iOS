@@ -126,11 +126,32 @@ class FirstViewController: UIViewController {
         })
         
         // Listen for deleted staticKits in the Firebase database
-        staticKitsRef.observe(.childRemoved, with: { (snapshot) -> Void in
-            
+        staticKitsRef.observe(.childRemoved, with: { [weak self] (snapshot) -> Void in
+            //get  value as dictionary
+            guard let dict = snapshot.value as? [String:Any] else { return }
+            //get the userid
+            guard let rmuid = dict["userId"] as? String else {return }
+            //remove
+            if let index = self?.allStaticKits.index(where: {$0.userId == rmuid}) {
+                self?.allStaticKits.remove(at: index)
+            }
         })
         // Listen for deleted staticKits in the Firebase database
-        staticKitsRef.observe(.childChanged, with: { (snapshot) -> Void in
+        staticKitsRef.observe(.childChanged, with: { [weak self] (snapshot) -> Void in
+            //remove
+            guard let dict = snapshot.value as? [String:Any] else { return }
+            guard let changeuid = dict["userId"] as? String else {return }
+            if let index = self?.allStaticKits.index(where: {$0.userId == changeuid}) {
+                self?.allStaticKits.remove(at: index)
+            }
+            //add back
+            if let addedskit = StaticKit(From: snapshot) {
+                self?.allStaticKits.append(addedskit)
+//                print("start printing\n")
+//                print(addedskit)
+//                print("\(self?.allStaticKits.count ?? -1)")
+            }
+            
             
         })
         
