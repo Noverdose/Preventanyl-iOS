@@ -9,6 +9,7 @@ target 'Preventanyl' do
 
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
 
   target 'PreventanylTests' do
     inherit! :search_paths
