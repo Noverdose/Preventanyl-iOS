@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>111767423984-bmjmi9trpmvq4t5dcim5upkq81engjon.apps.googleusercontent.com</string>
+	<string>111767423984-ggd0r92m5m0hg0tddbvj2tv2vqkk6rc8.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.111767423984-bmjmi9trpmvq4t5dcim5upkq81engjon</string>
+	<string>com.googleusercontent.apps.111767423984-ggd0r92m5m0hg0tddbvj2tv2vqkk6rc8</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBTMNF60QPUxLA8pe2vZjJQiELaPG_d6Mk</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,23 +17,23 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>Noverdose.Preventanyl</string>
+	<string>nooverdose.preventanyl</string>
 	<key>PROJECT_ID</key>
 	<string>preventanyl</string>
 	<key>STORAGE_BUCKET</key>
 	<string>preventanyl.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:111767423984:ios:62d9f176d3511a11</string>
+	<string>1:111767423984:ios:32bc5b2ba04eb54a</string>
 	<key>DATABASE_URL</key>
 	<string>https://preventanyl.firebaseio.com</string>
 </dict>

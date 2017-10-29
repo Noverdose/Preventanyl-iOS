@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](	)
 
+## - 2017-10-28 - Kent Huang
+- Added local Statickit class
+-Added FireBase StaticKits-Change listener in FirstViewController
+- Fetched and Stored the FireBaseDatabase's StaticKits in an array of Statickit type
 
 ## -2017-10-27 - Brayden Traas
 - Added in-app, background, and OS-triggered location tracking switched by a switch.

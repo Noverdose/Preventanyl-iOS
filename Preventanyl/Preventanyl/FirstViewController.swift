@@ -10,9 +10,11 @@ import UIKit
 import MapKit
 import CoreLocation
 import UserNotifications
+import Firebase
+import FirebaseDatabase
 
 class FirstViewController: UIViewController {
-
+    
     @IBOutlet weak var MapView: MKMapView!
     
     // Gets app delegate for use of its helper functions (usages such as location)
@@ -25,8 +27,18 @@ class FirstViewController: UIViewController {
     //var marker: Marker?
     var annotation: MKPointAnnotation?
     
+    // firebase database refs
+    lazy var ref: DatabaseReference = Database.database().reference()
+    var staticKitsRef: DatabaseReference!
+    //all the static kits
+    var allStaticKits:[StaticKit]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //firebase database reference of statickits
+        staticKitsRef = ref.child("statickits")
+        
         // Do any additional setup after loading the view, typically from a nib.
         // set initlial location in Honolulu
         // let initialLocation = CLLocation(latitude: 21.28778, longitude: -157.829444)
@@ -42,12 +54,12 @@ class FirstViewController: UIViewController {
         coord = appDelegate.locationManager.location?.coordinate
         if (coord != nil) {
             let location = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
-        
-//            marker = Marker (title: "Marker",
-//                                 locationName:"User Position",
-//                                 discipline: "You",
-//                                 coordinate: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude:  location.coordinate.longitude))
-
+            
+            //            marker = Marker (title: "Marker",
+            //                                 locationName:"User Position",
+            //                                 discipline: "You",
+            //                                 coordinate: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude:  location.coordinate.longitude))
+            
             annotation = MKPointAnnotation()
             annotation?.coordinate = coord
             
@@ -57,13 +69,13 @@ class FirstViewController: UIViewController {
         
         
         /* let marker = Marker (title: "Marker",
-                             locationName:"Waikiki Gateway Park",
-                             discipline: "Sculpture",
-                             coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661)) */
+         locationName:"Waikiki Gateway Park",
+         discipline: "Sculpture",
+         coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661)) */
         
         
     }
-
+    
     func updateUserLocation(location: CLLocation) {
         
         if !centered {
@@ -71,19 +83,19 @@ class FirstViewController: UIViewController {
         }
         centered = true
         
-//        let marker = Marker (title: "Marker",
-//                             locationName:"User Position",
-//                             discipline: "You",
-//                             coordinate: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
-//        centerMapOnLocation (location: location)
-//        MapView.addAnnotation (marker)
-
+        //        let marker = Marker (title: "Marker",
+        //                             locationName:"User Position",
+        //                             discipline: "You",
+        //                             coordinate: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
+        //        centerMapOnLocation (location: location)
+        //        MapView.addAnnotation (marker)
+        
         if self.annotation != nil {
             self.annotation!.coordinate = location.coordinate
-        
+            
         }
         
-    
+        
     }
     
     let regionRadius: CLLocationDistance = 1000
@@ -93,5 +105,62 @@ class FirstViewController: UIViewController {
             location.coordinate, doubleRegionRadius, doubleRegionRadius)
         MapView.setRegion (coordinateRadius, animated:true)
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        allStaticKits = [StaticKit]()
+        
+        // Listen for new staticKits in the Firebase database
+        //////it is aysn.kits will be added one by one;
+        //
+        staticKitsRef.observe(.childAdded, with: {[weak self] (snapshot) -> Void in
+            
+            if let addedskit = StaticKit(From: snapshot) {
+                self?.allStaticKits.append(addedskit)
+                
+                //debug info
+                print("start printing\n")
+                print(addedskit)
+                print("\(self?.allStaticKits.count ?? -1)")
+            }
+            
+        })
+        
+        // Listen for deleted staticKits in the Firebase database
+        staticKitsRef.observe(.childRemoved, with: { [weak self] (snapshot) -> Void in
+            //get  value as dictionary
+            guard let dict = snapshot.value as? [String:Any] else { return }
+            //get the userid
+            guard let rmuid = dict["userId"] as? String else {return }
+            //remove
+            if let index = self?.allStaticKits.index(where: {$0.userId == rmuid}) {
+                self?.allStaticKits.remove(at: index)
+            }
+        })
+        // Listen for deleted staticKits in the Firebase database
+        staticKitsRef.observe(.childChanged, with: { [weak self] (snapshot) -> Void in
+            //remove
+            guard let dict = snapshot.value as? [String:Any] else { return }
+            guard let changeuid = dict["userId"] as? String else {return }
+            if let index = self?.allStaticKits.index(where: {$0.userId == changeuid}) {
+                self?.allStaticKits.remove(at: index)
+            }
+            //add back
+            if let addedskit = StaticKit(From: snapshot) {
+                self?.allStaticKits.append(addedskit)
+//                print("start printing\n")
+//                print(addedskit)
+//                print("\(self?.allStaticKits.count ?? -1)")
+            }
+            
+            
+        })
+        
+        
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        staticKitsRef.removeAllObservers()
+    }
 }
+
