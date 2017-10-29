@@ -25,13 +25,16 @@ class FirstViewController: UIViewController {
     var centered: Bool = false
     
     //var marker: Marker?
-    var annotation: MKPointAnnotation?
+    var selfAnnotation: MKPointAnnotation?
+    
+    var staticKitMarkerMap: Dictionary<Int32, Marker> = Dictionary<Int32, Marker>()
+    
     
     // firebase database refs
     lazy var ref: DatabaseReference = Database.database().reference()
     var staticKitsRef: DatabaseReference!
     //all the static kits
-    var allStaticKits:[StaticKit]!
+    var allStaticKits: [StaticKit]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,11 +63,11 @@ class FirstViewController: UIViewController {
             //                                 discipline: "You",
             //                                 coordinate: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude:  location.coordinate.longitude))
             
-            annotation = MKPointAnnotation()
-            annotation?.coordinate = coord
+            selfAnnotation = MKPointAnnotation()
+            selfAnnotation?.coordinate = coord
             
             centerMapOnLocation (location: location)
-            MapView.addAnnotation (annotation!)
+            MapView.addAnnotation (selfAnnotation!)
         }
         
         
@@ -86,12 +89,12 @@ class FirstViewController: UIViewController {
         //        let marker = Marker (title: "Marker",
         //                             locationName:"User Position",
         //                             discipline: "You",
-        //                             coordinate: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
+        //                             let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
         //        centerMapOnLocation (location: location)
         //        MapView.addAnnotation (marker)
         
-        if self.annotation != nil {
-            self.annotation!.coordinate = location.coordinate
+        if self.selfAnnotation != nil {
+            self.selfAnnotation!.coordinate = location.coordinate
             
         }
         
@@ -106,7 +109,8 @@ class FirstViewController: UIViewController {
         MapView.setRegion (coordinateRadius, animated:true)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
+        
         allStaticKits = [StaticKit]()
         
         // Listen for new staticKits in the Firebase database
@@ -114,8 +118,24 @@ class FirstViewController: UIViewController {
         //
         staticKitsRef.observe(.childAdded, with: {[weak self] (snapshot) -> Void in
             
+            print("childAdded")
+            
             if let addedskit = StaticKit(From: snapshot) {
+                
+                
+                guard let id = Int32(addedskit.id) else {
+                    print("kit id (\(addedskit.id)) is not an int! Skipping!")
+                    return
+                }
+                
                 self?.allStaticKits.append(addedskit)
+                
+                let newMarker = Marker (title: addedskit.displayName,
+                                        locationName: "\(addedskit.address.streetAddress) \(addedskit.address.city)",
+                                        discipline: "Static Kit",
+                                        coordinate: CLLocationCoordinate2D(latitude: addedskit.coordinates.lat, longitude: addedskit.coordinates.long))
+                self?.MapView.addAnnotation(newMarker)
+                self?.staticKitMarkerMap[id] = newMarker
                 
                 //debug info
                 print("start printing\n")
@@ -127,17 +147,39 @@ class FirstViewController: UIViewController {
         
         // Listen for deleted staticKits in the Firebase database
         staticKitsRef.observe(.childRemoved, with: { [weak self] (snapshot) -> Void in
+            
+            print("childRemoved")
+            
             //get  value as dictionary
-            guard let dict = snapshot.value as? [String:Any] else { return }
+            guard let dict = snapshot.value as? [String:Any] else {
+                print("childRemoved: Unable to parse snapshot.value from firebase!")
+                return
+            }
             //get the userid
-            guard let rmuid = dict["userId"] as? String else {return }
+            guard let rmuid = dict["userId"] as? String else {
+                print("childRemoved: userId not found!")
+                return
+            }
             //remove
+            guard let kit = StaticKit(From: snapshot) else {
+                print("childRemoved: Unable to parse Kit from firebase!")
+                return
+            }
+            guard let id = Int32(kit.id) else {
+                print("Invalid id not an int: (\(kit.id)). Unable to remove!")
+                return
+            }
+            self?.staticKitMarkerMap.removeValue(forKey: id)
             if let index = self?.allStaticKits.index(where: {$0.userId == rmuid}) {
                 self?.allStaticKits.remove(at: index)
             }
         })
         // Listen for deleted staticKits in the Firebase database
         staticKitsRef.observe(.childChanged, with: { [weak self] (snapshot) -> Void in
+            
+            print("childChanged")
+            
+            
             //remove
             guard let dict = snapshot.value as? [String:Any] else { return }
             guard let changeuid = dict["userId"] as? String else {return }
