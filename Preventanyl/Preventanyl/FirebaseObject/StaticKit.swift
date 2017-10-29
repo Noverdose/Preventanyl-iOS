@@ -51,20 +51,23 @@ class StaticKit: NSObject {
 }
 
 class Address :NSObject{
+    
+    var streetAddress : String
+    var city: String
+    var provincestate : String
     var country : String
     var postalCode : String
-    var provincestate : String
-    var streetAddress : String
     
     init(addressOJ: [String:String]) {
+        streetAddress = addressOJ["streetAddress"]!
+        city = addressOJ["city"]!
+        provincestate = addressOJ["provincestate"]!
         country = addressOJ["country"]!
         postalCode = addressOJ["postalCode"]!
-        provincestate = addressOJ["provincestate"]!
-        streetAddress = addressOJ["streetAddress"]!
     }
     
     override var description: String {
-        return "country: \(country)\n postalCode: \(postalCode)\n provincestate:\(provincestate)\n streetAddress: \(streetAddress)"
+        return "country: \(country)\n postalCode: \(postalCode)\n provincestate:\(provincestate)\n streetAddress: \(streetAddress)\n city: \(city)"
     }
 }
 

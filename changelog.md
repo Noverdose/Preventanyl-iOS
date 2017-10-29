@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](	)
 
+## - 2017-10-28 - Brayden Traas
+- Updated local Statickit class to include City
+- Made a map of map markers (lol) to map static kit id => marker. 
+    - Adds/Removes with the Change listener, but doesn't update location on update (because it's static & a constant Marker object). If we really want this functionality, we can make them some other Annotation type other than Marker.
+
+
 ## - 2017-10-28 - Kent Huang
 - Added local Statickit class
 -Added FireBase StaticKits-Change listener in FirstViewController
