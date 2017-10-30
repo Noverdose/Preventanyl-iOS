@@ -181,6 +181,7 @@ class Location {
     }
     
     
+
     // decide what to do with the new location. Depends if this user has a moving Naloxone kit
     static func updateUser(location: CLLocation) {
         
