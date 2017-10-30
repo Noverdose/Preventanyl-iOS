@@ -52,21 +52,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
     {
-        switch status
-        {
-        case .authorizedAlways:
-            print("always is authorized")
-            locationManager.requestLocation()
-        case .authorizedWhenInUse:
-            print("when in use")
-            locationManager.requestLocation()
-        case .denied:
-            print("denied")
-        case .notDetermined:
-            print("not determined")
-        case .restricted:
-            print("restricted")
-        }
+        
+        let viewController = self.window?.rootViewController
+
+        
+        Location.locationAuthorizationStatus(viewController: viewController, status: status)
+        
+//        switch status
+//        {
+//        case .authorizedAlways:
+//            print("always is authorized")
+//            locationManager.requestLocation()
+//        case .authorizedWhenInUse:
+//            print("when in use")
+//            locationManager.requestLocation()
+//        case .denied:
+//            print("denied")
+//        case .notDetermined:
+//            print("not determined")
+//        case .restricted:
+//            print("restricted")
+//        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -127,9 +133,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         self.locationManager.delegate = self
         if UserDefaults.standard.bool(forKey: Location.TRACK_ME_AT_ALL_TIMES) {
-            Location.startLocationUpdatesAlways(caller: nil)
+            Location.startLocationUpdatesAlways(caller: self.window?.rootViewController)
         } else {
-            Location.startLocationUpdatesWhenInUse()
+            Location.startLocationUpdatesWhenInUse(caller: self.window?.rootViewController)
         }
 
     }

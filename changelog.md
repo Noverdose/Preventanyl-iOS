@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](	)
 
 ## - 2017-10-28 - Brayden Traas
+- Fixed Location permissions bug
+- Centralized location permissions for better user feedback
+
+## - 2017-10-28 - Brayden Traas
 - Added PreventanylAnnotation protocol to make it easy for multiple annotation types & images
 - Added dummy overdose
 
