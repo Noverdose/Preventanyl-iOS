@@ -39,6 +39,8 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        MapView.delegate = self
+        
         //firebase database reference of statickits
         staticKitsRef = ref.child("statickits")
         
@@ -76,6 +78,7 @@ class FirstViewController: UIViewController {
          discipline: "Sculpture",
          coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661)) */
         
+        addDummyData()
         
     }
     
@@ -199,6 +202,56 @@ class FirstViewController: UIViewController {
         
         
         
+    }
+    
+    
+    
+    
+    func addDummyData() {
+        print("addDummyData()")
+        DispatchQueue.global(qos: .background).async {
+            print("sleeping 3 seconds")
+            sleep(3)
+            print("queueing UI thread")
+            DispatchQueue.main.async {
+                
+                print("adding fake overdose 1 to map")
+                
+                
+                let userCoordinate = self.selfAnnotation?.coordinate ?? CLLocationCoordinate2D(latitude: 49.205323, longitude: -122.930271)
+                
+                let fakeOverdose1 = OverdoseAnnotation()
+                fakeOverdose1.coordinate = CLLocationCoordinate2D(latitude: userCoordinate.latitude + 0.07, longitude: userCoordinate.longitude + 0.04)
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "hh:mm"
+                let hhmm = dateFormatter.string(from: Date())
+                fakeOverdose1.title = "Reported Overdose @ \(hhmm)"
+                
+                self.MapView.addAnnotation(fakeOverdose1)
+                //let overdose1View = self.MapView.view(for: fakeOverdose1)
+                
+                let message = "Overdose reported near you! (Test)."
+                let alertController = UIAlertController(title: "New Overdose", message: message, preferredStyle: UIAlertControllerStyle.alert) //Replace UIAlertControllerStyle.Alert by
+                
+                let cancelAction = UIAlertAction(title: "Ignore", style: UIAlertActionStyle.default) {
+                    (result : UIAlertAction) -> Void in
+                    print("Cancel")
+                }
+                
+                let showAction = UIAlertAction(title: "Show", style: UIAlertActionStyle.default) {
+                    (result : UIAlertAction) -> Void in
+                    print("Show")
+                    self.centerMapOnLocation(location: CLLocation(latitude: fakeOverdose1.coordinate.latitude, longitude: fakeOverdose1.coordinate.longitude))
+                    
+                }
+                
+                alertController.addAction(cancelAction)
+                alertController.addAction(showAction)
+                self.present(alertController, animated: true, completion: nil)
+                
+                
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
