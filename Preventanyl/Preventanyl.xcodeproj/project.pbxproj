@@ -159,6 +159,7 @@
 		545A894F1FA6A87300BB73CD /* MapAnnotations */ = {
 			isa = PBXGroup;
 			children = (
+				B9B302171F7E2B5E00C5FD04 /* Marker.swift */,
 				545A89501FA6A87300BB73CD /* AbstractAnnotation.swift */,
 				545A89511FA6A87300BB73CD /* OverdoseAnnotation.swift */,
 			);
@@ -190,21 +191,20 @@
 		B91802351F7DD27D000C5246 /* Preventanyl */ = {
 			isa = PBXGroup;
 			children = (
+				B918023F1F7DD27D000C5246 /* Assets.xcassets */,
+				B91802411F7DD27D000C5246 /* LaunchScreen.storyboard */,
+				B918023C1F7DD27D000C5246 /* Main.storyboard */,
+				B91802441F7DD27D000C5246 /* Info.plist */,
 				4745D6301FA53B1600CD90C1 /* GoogleService-Info.plist */,
 				4745D62D1FA5376000CD90C1 /* FirebaseObject */,
 				546AEEE41FA3EC92007DD24B /* Location.swift */,
 				546AEEE51FA3EC92007DD24B /* Notifications.swift */,
-				478918241F90AC9800450F21 /* AccountTab */,
 				B91802361F7DD27D000C5246 /* AppDelegate.swift */,
+				478918311F90B49B00450F21 /* MainTabBarViewController.swift */,
 				B91802381F7DD27D000C5246 /* FirstViewController.swift */,
 				B9B302191F7E2DF600C5FD04 /* VCMapView.swift */,
 				545A894F1FA6A87300BB73CD /* MapAnnotations */,
-				B918023C1F7DD27D000C5246 /* Main.storyboard */,
-				B9B302171F7E2B5E00C5FD04 /* Marker.swift */,
-				B918023F1F7DD27D000C5246 /* Assets.xcassets */,
-				B91802411F7DD27D000C5246 /* LaunchScreen.storyboard */,
-				B91802441F7DD27D000C5246 /* Info.plist */,
-				478918311F90B49B00450F21 /* MainTabBarViewController.swift */,
+				478918241F90AC9800450F21 /* AccountTab */,
 			);
 			path = Preventanyl;
 			sourceTree = "<group>";

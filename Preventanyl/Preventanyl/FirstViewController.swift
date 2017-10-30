@@ -270,8 +270,11 @@ class FirstViewController: UIViewController {
     }
     
     @IBAction func helpMe(_ sender: UIButton) {
-        let alert = UIAlertController (title: "Notifying Nearby", message: "Someone will be near you shortly", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+        let alert = UIAlertController (title: "Notifying Nearby", message: "Alerting nearby Angels", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { _ in
+            print("not yet implemented")
+        }))
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
 }
