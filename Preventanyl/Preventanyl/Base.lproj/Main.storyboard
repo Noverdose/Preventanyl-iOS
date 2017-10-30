@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -48,6 +48,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZHF-fG-NoL">
+                                <rect key="frame" x="45" y="38" width="230" height="29"/>
+                                <segments>
+                                    <segment title="Register"/>
+                                    <segment title="Login"/>
+                                    <segment title="Phone"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="registerLoginChanged:" destination="8rJ-Kc-sve" eventType="valueChanged" id="ScD-LX-SAn"/>
+                                </connections>
+                            </segmentedControl>
                             <textField opaque="NO" contentMode="center" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="FVZ-Eu-nA9">
                                 <rect key="frame" x="45" y="189" width="230" height="50"/>
                                 <constraints>
@@ -67,17 +79,6 @@
                                     <action selector="valueChanged:" destination="8rJ-Kc-sve" eventType="valueChanged" id="DOg-GK-Wlx"/>
                                 </connections>
                             </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZHF-fG-NoL">
-                                <rect key="frame" x="45" y="38" width="230" height="29"/>
-                                <segments>
-                                    <segment title="Register"/>
-                                    <segment title="Login"/>
-                                </segments>
-                                <color key="tintColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="registerLoginChanged:" destination="8rJ-Kc-sve" eventType="valueChanged" id="ScD-LX-SAn"/>
-                                </connections>
-                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HM9-Cy-MLB">
                                 <rect key="frame" x="45" y="334" width="230" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -165,6 +166,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="profile" selectedImage="profile" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="password" destination="EPi-rA-QWG" id="vJ8-L7-vSS"/>
+                        <outlet property="registerLoginButton" destination="HM9-Cy-MLB" id="tWX-KP-wcG"/>
                         <outlet property="registerLoginLabel" destination="e4w-Cz-G02" id="25f-uG-Z4k"/>
                         <outlet property="trackMeAlwaysSwitch" destination="7Wv-iJ-jXd" id="6XR-fO-DbY"/>
                         <outlet property="username" destination="FVZ-Eu-nA9" id="QkJ-fi-Inv"/>

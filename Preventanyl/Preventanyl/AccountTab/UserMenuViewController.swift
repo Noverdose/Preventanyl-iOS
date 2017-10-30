@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class UserMenuViewController: UIViewController {
 
@@ -18,6 +19,14 @@ class UserMenuViewController: UIViewController {
 
     @IBAction func logoff(_ sender: UIButton) {
         Userinfo.islogin = false
+        //log off from firebase
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
         //get the current navigation stack array
         let navControllerArr = [(storyboard?.instantiateViewController(withIdentifier: "SecondViewController"))!]
         //perform the view switch
