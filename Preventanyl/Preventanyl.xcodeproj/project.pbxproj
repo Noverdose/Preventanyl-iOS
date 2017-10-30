@@ -16,8 +16,8 @@
 		4789182B1F90B3A200450F21 /* UserMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478918291F90B3A200450F21 /* UserMenuViewController.swift */; };
 		4789182C1F90B3A200450F21 /* AccountMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4789182A1F90B3A200450F21 /* AccountMenuViewController.xib */; };
 		478918321F90B49B00450F21 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478918311F90B49B00450F21 /* MainTabBarViewController.swift */; };
-		545A89451FA6926700BB73CD /* AbstractAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A89441FA6926600BB73CD /* AbstractAnnotation.swift */; };
-		545A89491FA6956400BB73CD /* OverdoseAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A89481FA6956400BB73CD /* OverdoseAnnotation.swift */; };
+		545A89521FA6A87300BB73CD /* AbstractAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A89501FA6A87300BB73CD /* AbstractAnnotation.swift */; };
+		545A89531FA6A87300BB73CD /* OverdoseAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A89511FA6A87300BB73CD /* OverdoseAnnotation.swift */; };
 		546AEEE61FA3EC92007DD24B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546AEEE41FA3EC92007DD24B /* Location.swift */; };
 		546AEEE71FA3EC92007DD24B /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546AEEE51FA3EC92007DD24B /* Notifications.swift */; };
 		B4EC6221E230C1797C3656F6 /* Pods_PreventanylTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8728B3CC60D9D5827F780470 /* Pods_PreventanylTests.framework */; };
@@ -65,8 +65,8 @@
 		478918291F90B3A200450F21 /* UserMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuViewController.swift; sourceTree = "<group>"; };
 		4789182A1F90B3A200450F21 /* AccountMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountMenuViewController.xib; sourceTree = "<group>"; };
 		478918311F90B49B00450F21 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
-		545A89441FA6926600BB73CD /* AbstractAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractAnnotation.swift; sourceTree = "<group>"; };
-		545A89481FA6956400BB73CD /* OverdoseAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverdoseAnnotation.swift; sourceTree = "<group>"; };
+		545A89501FA6A87300BB73CD /* AbstractAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractAnnotation.swift; sourceTree = "<group>"; };
+		545A89511FA6A87300BB73CD /* OverdoseAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverdoseAnnotation.swift; sourceTree = "<group>"; };
 		546AEEE41FA3EC92007DD24B /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		546AEEE51FA3EC92007DD24B /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		8728B3CC60D9D5827F780470 /* Pods_PreventanylTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PreventanylTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,11 +156,11 @@
 			path = AccountTab;
 			sourceTree = "<group>";
 		};
-		545A89471FA6929300BB73CD /* MapAnnotations */ = {
+		545A894F1FA6A87300BB73CD /* MapAnnotations */ = {
 			isa = PBXGroup;
 			children = (
-				545A89441FA6926600BB73CD /* AbstractAnnotation.swift */,
-				545A89481FA6956400BB73CD /* OverdoseAnnotation.swift */,
+				545A89501FA6A87300BB73CD /* AbstractAnnotation.swift */,
+				545A89511FA6A87300BB73CD /* OverdoseAnnotation.swift */,
 			);
 			path = MapAnnotations;
 			sourceTree = "<group>";
@@ -198,7 +198,7 @@
 				B91802361F7DD27D000C5246 /* AppDelegate.swift */,
 				B91802381F7DD27D000C5246 /* FirstViewController.swift */,
 				B9B302191F7E2DF600C5FD04 /* VCMapView.swift */,
-				545A89471FA6929300BB73CD /* MapAnnotations */,
+				545A894F1FA6A87300BB73CD /* MapAnnotations */,
 				B918023C1F7DD27D000C5246 /* Main.storyboard */,
 				B9B302171F7E2B5E00C5FD04 /* Marker.swift */,
 				B918023F1F7DD27D000C5246 /* Assets.xcassets */,
@@ -546,14 +546,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				475E5DEA1F9166A300CF82E0 /* Userinfo.swift in Sources */,
-				545A89491FA6956400BB73CD /* OverdoseAnnotation.swift in Sources */,
+				545A89531FA6A87300BB73CD /* OverdoseAnnotation.swift in Sources */,
 				B918023B1F7DD27D000C5246 /* SecondViewController.swift in Sources */,
 				546AEEE71FA3EC92007DD24B /* Notifications.swift in Sources */,
 				546AEEE61FA3EC92007DD24B /* Location.swift in Sources */,
 				B9B302181F7E2B5E00C5FD04 /* Marker.swift in Sources */,
 				478918271F90ACFF00450F21 /* AccountUINavigaionController.swift in Sources */,
 				4745D62F1FA5378D00CD90C1 /* StaticKit.swift in Sources */,
-				545A89451FA6926700BB73CD /* AbstractAnnotation.swift in Sources */,
+				545A89521FA6A87300BB73CD /* AbstractAnnotation.swift in Sources */,
 				478918321F90B49B00450F21 /* MainTabBarViewController.swift in Sources */,
 				B9B3021A1F7E2DF600C5FD04 /* VCMapView.swift in Sources */,
 				B91802371F7DD27D000C5246 /* AppDelegate.swift in Sources */,
