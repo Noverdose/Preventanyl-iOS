@@ -257,5 +257,11 @@ class FirstViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         staticKitsRef.removeAllObservers()
     }
+    
+    @IBAction func helpMe(_ sender: UIButton) {
+        let alert = UIAlertController (title: "Notifying Nearby", message: "Someone will be near you shortly", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
