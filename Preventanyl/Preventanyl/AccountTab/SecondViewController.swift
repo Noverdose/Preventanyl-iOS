@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class SecondViewController: UIViewController, UITextFieldDelegate {
 
@@ -14,21 +15,37 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
     
     static let MODE_REGISTER = 0
     static let MODE_LOGIN    = 1
-    
-    @IBOutlet var trackMeAlwaysButton: UIButton!
-    @IBAction func trackMeAlwaysClick(_ sender: Any) {
-        appDelegate.locationManager.requestAlwaysAuthorization()
-    }
-    
+
+    var locationDeniedObserver: Any?
+    var locationAlwaysObserver: NSObjectProtocol?
+
     @IBOutlet var trackMeAlwaysSwitch: UISwitch!
     
     @IBAction func trackSwitchClick(_ trackTest: UISwitch) {
         UserDefaults.standard.set(trackTest.isOn, forKey: Location.TRACK_ME_AT_ALL_TIMES)
         if(trackTest.isOn) {
+        
+            if CLLocationManager.authorizationStatus() != .authorizedAlways {
+                trackMeAlwaysSwitch.setOn(false, animated: true)
+                self.locationAlwaysObserver = Notifications.addObserver(messageName: Location.LOCATION_AUTHORIZATION_CHANGED, object: nil, using: { _ in
+                    if CLLocationManager.authorizationStatus() == .authorizedAlways {
+                        Notifications.removeObserver(observer: self.locationAlwaysObserver)
+                        self.trackMeAlwaysSwitch.setOn(true, animated: true)
+                    }
+                })
+                
+            }
             Location.startLocationUpdatesAlways(caller: self)
+            
+        
+            
         } else {
+            
+            Notifications.removeObserver(observer: locationAlwaysObserver)
+            
             Location.stopBackgroundUpdates()
-            Location.startLocationUpdatesWhenInUse()
+            Location.startLocationUpdatesWhenInUse(caller: self)
+            
         }
     }
     
@@ -58,11 +75,18 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
         self.currentMode = SecondViewController.MODE_REGISTER
         
         
+        locationDeniedObserver = Notifications.addObserver(messageName: Location.LOCATION_PERMISSION_FALIED, object: nil, using: { _ in
+            self.trackMeAlwaysSwitch.setOn(false, animated: true)
+        })
+        
         if UserDefaults.standard.bool(forKey: Location.TRACK_ME_AT_ALL_TIMES) {
             trackMeAlwaysSwitch.setOn(true, animated: false)
+            Location.startLocationUpdatesAlways(caller: self)
         } else {
             trackMeAlwaysSwitch.setOn(false, animated: false)
         }
+        
+        
         
         
     }

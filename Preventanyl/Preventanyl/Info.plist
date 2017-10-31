@@ -21,9 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app requires access to your phone’s location to notify you when you enter or leave a geofence.</string>
+	<string>Preventanyl requires your location to track your portable naloxone kit</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app requires access to your phone’s location to notify you of kits near you</string>
+	<string>This app uses your phone’s location to show you nearby naloxone kits</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
