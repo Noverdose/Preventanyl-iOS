@@ -9,6 +9,12 @@
 import UIKit
 import Firebase
 
+/*
+ After login, In your apps, you can get the user's basic profile information from the FIRUser object. See Manage Users.
+ links:
+ https://firebase.google.com/docs/reference/ios/firebaseauth/api/reference/Classes/FIRUser
+ https://firebase.google.com/docs/auth/ios/manage-users
+ */
 class UserMenuViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -28,7 +34,7 @@ class UserMenuViewController: UIViewController {
         }
         
         //get the current navigation stack array
-        let navControllerArr = [(storyboard?.instantiateViewController(withIdentifier: "SecondViewController"))!]
+        let navControllerArr = [(storyboard?.instantiateViewController(withIdentifier: "PhoneLoginViewController"))!]
         //perform the view switch
         navigationController?.setViewControllers(navControllerArr, animated: true)
     }
