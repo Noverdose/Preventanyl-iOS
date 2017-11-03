@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C29DBB40B8B6DE089A2F663 /* Pods_Preventanyl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14457CE3F8010DB4C44A79C9 /* Pods_Preventanyl.framework */; };
 		111BDAFE1FACEEBD00A67CF2 /* Raycast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111BDAFD1FACEEBD00A67CF2 /* Raycast.swift */; };
+		473DA4E61FACFE220035AEED /* PhoneLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473DA4E51FACFE220035AEED /* PhoneLoginViewController.swift */; };
 		4745D62F1FA5378D00CD90C1 /* StaticKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4745D62E1FA5378D00CD90C1 /* StaticKit.swift */; };
 		4745D6311FA53B1600CD90C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4745D6301FA53B1600CD90C1 /* GoogleService-Info.plist */; };
 		475E5DEA1F9166A300CF82E0 /* Userinfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475E5DE91F9166A300CF82E0 /* Userinfo.swift */; };
@@ -24,7 +25,6 @@
 		B4EC6221E230C1797C3656F6 /* Pods_PreventanylTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8728B3CC60D9D5827F780470 /* Pods_PreventanylTests.framework */; };
 		B91802371F7DD27D000C5246 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91802361F7DD27D000C5246 /* AppDelegate.swift */; };
 		B91802391F7DD27D000C5246 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91802381F7DD27D000C5246 /* FirstViewController.swift */; };
-		B918023B1F7DD27D000C5246 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B918023A1F7DD27D000C5246 /* SecondViewController.swift */; };
 		B918023E1F7DD27D000C5246 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B918023C1F7DD27D000C5246 /* Main.storyboard */; };
 		B91802401F7DD27D000C5246 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B918023F1F7DD27D000C5246 /* Assets.xcassets */; };
 		B91802431F7DD27D000C5246 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B91802411F7DD27D000C5246 /* LaunchScreen.storyboard */; };
@@ -59,6 +59,7 @@
 		1E08E399C0D5022E8463E93E /* Pods-PreventanylTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PreventanylTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PreventanylTests/Pods-PreventanylTests.release.xcconfig"; sourceTree = "<group>"; };
 		2B7ACE4F5776D70A1A65F6D5 /* Pods-PreventanylUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PreventanylUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PreventanylUITests/Pods-PreventanylUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4229B2F3013863BAC57EC9D6 /* Pods-PreventanylTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PreventanylTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PreventanylTests/Pods-PreventanylTests.debug.xcconfig"; sourceTree = "<group>"; };
+		473DA4E51FACFE220035AEED /* PhoneLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneLoginViewController.swift; sourceTree = "<group>"; };
 		4745D62E1FA5378D00CD90C1 /* StaticKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticKit.swift; sourceTree = "<group>"; };
 		4745D6301FA53B1600CD90C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		475E5DE91F9166A300CF82E0 /* Userinfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Userinfo.swift; sourceTree = "<group>"; };
@@ -77,7 +78,6 @@
 		B91802331F7DD27D000C5246 /* Preventanyl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Preventanyl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B91802361F7DD27D000C5246 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B91802381F7DD27D000C5246 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		B918023A1F7DD27D000C5246 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		B918023D1F7DD27D000C5246 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B918023F1F7DD27D000C5246 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B91802421F7DD27D000C5246 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -148,12 +148,12 @@
 		478918241F90AC9800450F21 /* AccountTab */ = {
 			isa = PBXGroup;
 			children = (
-				B918023A1F7DD27D000C5246 /* SecondViewController.swift */,
 				478918251F90ACFF00450F21 /* AccountUINavigaionController.swift */,
 				478918261F90ACFF00450F21 /* AccountUINavigaionController.xib */,
 				478918291F90B3A200450F21 /* UserMenuViewController.swift */,
 				4789182A1F90B3A200450F21 /* AccountMenuViewController.xib */,
 				475E5DE91F9166A300CF82E0 /* Userinfo.swift */,
+				473DA4E51FACFE220035AEED /* PhoneLoginViewController.swift */,
 			);
 			path = AccountTab;
 			sourceTree = "<group>";
@@ -427,6 +427,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Preventanyl/Pods-Preventanyl-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SHSPhoneComponent/SHSPhoneComponent.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -434,6 +435,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SHSPhoneComponent.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -548,9 +550,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				473DA4E61FACFE220035AEED /* PhoneLoginViewController.swift in Sources */,
 				475E5DEA1F9166A300CF82E0 /* Userinfo.swift in Sources */,
 				545A89531FA6A87300BB73CD /* OverdoseAnnotation.swift in Sources */,
-				B918023B1F7DD27D000C5246 /* SecondViewController.swift in Sources */,
 				546AEEE71FA3EC92007DD24B /* Notifications.swift in Sources */,
 				546AEEE61FA3EC92007DD24B /* Location.swift in Sources */,
 				B9B302181F7E2B5E00C5FD04 /* Marker.swift in Sources */,
