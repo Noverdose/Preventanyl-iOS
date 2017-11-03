@@ -121,6 +121,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         UserDefaults.standard.synchronize();
     }
+    
+
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
@@ -143,6 +145,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    //disable push notification; have put something in info.plist to disable swizzling
+    //https://firebase.google.com/docs/auth/ios/phone-auth
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification notification: [AnyHashable : Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if Auth.auth().canHandleNotification(notification) {
+            return
+        }
+        // This notification is not auth related, developer should handle it.
+    }
+    
+    
+    // For iOS 9+
+    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+        if Auth.auth().canHandle(url) {
+            return true
+        }
+        // URL not auth related, developer should handle it
+        return false
+    }
+    
+    
 
 
 }
