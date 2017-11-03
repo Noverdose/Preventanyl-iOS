@@ -81,6 +81,15 @@ class FirstViewController: UIViewController {
         
         //addDummyData()
         
+        let point = Coordinates(lat: 2, long: 2)
+        let p2 = Coordinates(lat: 0, long: 0)
+        var poly = [Coordinates]()
+        poly.append(Coordinates(lat: 1, long: 1))
+        poly.append(Coordinates(lat: 3, long: 1))
+        poly.append(Coordinates(lat: 3, long: 3))
+        poly.append(Coordinates(lat: 1, long: 3))
+        print("The point is inside  the polygon: \(Raycast.isInside(point: point, polygon: poly))")
+        print("The point is inside  the polygon: \(Raycast.isInside(point: p2, polygon: poly))")
     }
     
     func updateUserLocation(location: CLLocation) {
