@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](	)
 
+## - 2017-11-03 - Stephen Cheng
+### Added
+- Raycasting algorithm
+
 ## - 2017-10-29 - Yudhvir Raj
 - Added help me button
 - Added demo functionality to button, displaying alert

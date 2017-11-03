@@ -80,6 +80,11 @@ class Coordinates: NSObject {
         long = coorOJ["long"]!
     }
     
+    init(lat: Double, long: Double) {
+        self.lat = lat
+        self.long = long
+    }
+    
     override var description: String {
         return "lat : \(lat)\n long: \(long)"
     }
