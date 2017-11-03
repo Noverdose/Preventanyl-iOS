@@ -3,6 +3,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](	)
 
+## - 2017-11-03 - Stephen Cheng
+### Added
+- Raycasting algorithm
+
+## - 2017-10-29 - Yudhvir Raj
+- Added help me button
+- Added demo functionality to button, displaying alert
+
+## - 2017-10-29 - Yudhvir Raj
+- Added Directions feature to app, making use of the right accessory callout button
+
+## - 2017-10-28 - Brayden Traas
+- Fixed Location permissions bug
+- Centralized location permissions for better user feedback
+
 ## - 2017-10-28 - Brayden Traas
 - Added PreventanylAnnotation protocol to make it easy for multiple annotation types & images
 - Added dummy overdose

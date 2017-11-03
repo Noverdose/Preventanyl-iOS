@@ -1,0 +1,24 @@
+form for adding kits to the database
+
+implement overdose, background fetch?
+implement help me button
+    auto sends after 5 seconds, give user time to cancel
+    they can also press send now to send instantly
+go back to user position on map
+draw polygon on the map
+    show only pins in the current city
+    need to get location and polygon from a coordinate from api
+lock to portrait
+
+moving pins
+    register and allow locations
+
+table view to show people what kits they have registered
+
+elevated users can add static kits directly
+users can "add" static kits that just sends an email to admins
+
+flag a kit that doesn't exist or has been moved
+
+company name
+

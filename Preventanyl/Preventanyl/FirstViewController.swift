@@ -29,6 +29,8 @@ class FirstViewController: UIViewController {
     
     var staticKitMarkerMap: Dictionary<Int32, Marker> = Dictionary<Int32, Marker>()
     
+    static var loadedDummyOverdoses = 0
+    
     
     // firebase database refs
     lazy var ref: DatabaseReference = Database.database().reference()
@@ -53,8 +55,7 @@ class FirstViewController: UIViewController {
             self.updateUserLocation(location: Location.currentLocation)
         }
         
-        appDelegate.locationManager.requestWhenInUseAuthorization()
-        appDelegate.locationManager.requestLocation()
+        Location.startLocationUpdatesWhenInUse(caller: self)
         var coord: CLLocationCoordinate2D!
         coord = appDelegate.locationManager.location?.coordinate
         if (coord != nil) {
@@ -78,8 +79,17 @@ class FirstViewController: UIViewController {
          discipline: "Sculpture",
          coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661)) */
         
-        addDummyData()
+        //addDummyData()
         
+        let point = Coordinates(lat: 2, long: 2)
+        let p2 = Coordinates(lat: 0, long: 0)
+        var poly = [Coordinates]()
+        poly.append(Coordinates(lat: 1, long: 1))
+        poly.append(Coordinates(lat: 3, long: 1))
+        poly.append(Coordinates(lat: 3, long: 3))
+        poly.append(Coordinates(lat: 1, long: 3))
+        print("The point is inside  the polygon: \(Raycast.isInside(point: point, polygon: poly))")
+        print("The point is inside  the polygon: \(Raycast.isInside(point: p2, polygon: poly))")
     }
     
     func updateUserLocation(location: CLLocation) {
@@ -200,6 +210,8 @@ class FirstViewController: UIViewController {
             
         })
         
+        addDummyData()
+        
         
         
     }
@@ -208,12 +220,20 @@ class FirstViewController: UIViewController {
     
     
     func addDummyData() {
+        
+        if FirstViewController.loadedDummyOverdoses > 0 {
+            return
+        }
+        
+        FirstViewController.loadedDummyOverdoses = FirstViewController.loadedDummyOverdoses + 1
+        
         print("addDummyData()")
-        DispatchQueue.global(qos: .background).async {
-            print("sleeping 3 seconds")
-            sleep(3)
-            print("queueing UI thread")
-            DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+//        DispatchQueue.global(qos: .background).async {
+//            print("sleeping 3 seconds")
+//            sleep(3)
+            //print("queueing UI thread")
+            //DispatchQueue.main.async {
                 
                 print("adding fake overdose 1 to map")
                 
@@ -250,12 +270,21 @@ class FirstViewController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
                 
                 
-            }
-        }
+        //    }
+        })
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         staticKitsRef.removeAllObservers()
+    }
+    
+    @IBAction func helpMe(_ sender: UIButton) {
+        let alert = UIAlertController (title: "Notifying Nearby", message: "Alerting nearby Angels", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { _ in
+            print("not yet implemented")
+        }))
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
