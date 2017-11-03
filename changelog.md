@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](	)
 
+## - 2017-11-03 - Kent Huang
+### Added
+- phone login
+
+
 ## - 2017-11-03 - Stephen Cheng
 ### Added
 - Raycasting algorithm
