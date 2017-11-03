@@ -269,13 +269,45 @@ class FirstViewController: UIViewController {
         staticKitsRef.removeAllObservers()
     }
     
+    var count = 5
+    var alert: UIAlertController?
+    var timer: Timer?
+    
     @IBAction func helpMe(_ sender: UIButton) {
-        let alert = UIAlertController (title: "Notifying Nearby", message: "Alerting nearby Angels", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { _ in
+        
+        
+        count = 5
+        
+        alert = UIAlertController (title: "Notifying in \(count)", message: "Alerting nearby Angels", preferredStyle: UIAlertControllerStyle.alert)
+        
+        
+        
+        alert!.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { _ in
             print("not yet implemented")
+            self.stopTimer()
         }))
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        alert!.addAction(UIAlertAction(title: "Notify Now", style: UIAlertActionStyle.default, handler: { _ in self.stopTimer()}))
+        self.present(alert!, animated: true, completion: nil)
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
     }
+    
+    func stopTimer() {
+        
+        timer?.invalidate()
+    }
+    
+    @objc func update() {
+        if(count > 0 && alert != nil) {
+            count = count - 1
+            alert?.title = "Notifying in \(count)"
+        } else {
+            timer?.invalidate()
+            alert?.dismiss(animated: true, completion: {
+                
+            })
+        }
+    }
+
 }
 
