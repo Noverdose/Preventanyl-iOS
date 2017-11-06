@@ -1,4 +1,5 @@
 PODS:
+  - Eureka (4.0.1)
   - Firebase/Auth (4.4.0):
     - Firebase/Core
     - FirebaseAuth (= 4.3.0)
@@ -45,12 +46,14 @@ PODS:
   - SHSPhoneComponent (2.31)
 
 DEPENDENCIES:
+  - Eureka
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
   - SHSPhoneComponent
 
 SPEC CHECKSUMS:
+  Eureka: c8bd5cc07143b6f66268c208d28a246c99b41955
   Firebase: 3e92884a63e8f76d107c43a67d2ab9071e1eda10
   FirebaseAnalytics: 722b53c7b32bfc7806b06e0093a2f5180d4f2c5a
   FirebaseAuth: e0087d479709b20b9613b804704a928d6eafb052
@@ -63,6 +66,6 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SHSPhoneComponent: fa4401ae7c34511669287e62739b3da7c4c49807
 
-PODFILE CHECKSUM: e08427b7f0cfebed04487c4735da8140b2144466
+PODFILE CHECKSUM: 7fe9d6f4b96f3704f1c820a5a23603686fa0bd93
 
 COCOAPODS: 1.3.1

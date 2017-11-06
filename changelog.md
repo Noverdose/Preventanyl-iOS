@@ -3,10 +3,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](	)
 
+## - 2017-11-03 - Yudhvir
+### Added
+- Euraka Pod
+- Register Naloxene Kit View Controller
+- Form for register naloxene kit controller using Euraka
+
 ## - 2017-11-03 - Kent Huang
 ### Added
 - phone login
-
 
 ## - 2017-11-03 - Stephen Cheng
 ### Added
