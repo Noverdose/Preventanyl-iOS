@@ -11,6 +11,7 @@ target 'Preventanyl' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'SHSPhoneComponent'
+  pod 'Eureka'
 
   target 'PreventanylTests' do
     inherit! :search_paths

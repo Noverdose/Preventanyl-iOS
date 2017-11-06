@@ -30,6 +30,7 @@
 		B91802431F7DD27D000C5246 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B91802411F7DD27D000C5246 /* LaunchScreen.storyboard */; };
 		B918024E1F7DD27D000C5246 /* PreventanylTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B918024D1F7DD27D000C5246 /* PreventanylTests.swift */; };
 		B91802591F7DD27E000C5246 /* PreventanylUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91802581F7DD27E000C5246 /* PreventanylUITests.swift */; };
+		B96C34641FAD23E8005D9D66 /* RegisterKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96C34631FAD23E8005D9D66 /* RegisterKitViewController.swift */; };
 		B9B302161F7E1E0300C5FD04 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B302151F7E1E0200C5FD04 /* MapKit.framework */; };
 		B9B302181F7E2B5E00C5FD04 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B302171F7E2B5E00C5FD04 /* Marker.swift */; };
 		B9B3021A1F7E2DF600C5FD04 /* VCMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B302191F7E2DF600C5FD04 /* VCMapView.swift */; };
@@ -88,6 +89,7 @@
 		B91802541F7DD27E000C5246 /* PreventanylUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PreventanylUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B91802581F7DD27E000C5246 /* PreventanylUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreventanylUITests.swift; sourceTree = "<group>"; };
 		B918025A1F7DD27E000C5246 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B96C34631FAD23E8005D9D66 /* RegisterKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterKitViewController.swift; sourceTree = "<group>"; };
 		B9B302151F7E1E0200C5FD04 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B9B302171F7E2B5E00C5FD04 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		B9B302191F7E2DF600C5FD04 /* VCMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCMapView.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				B91802361F7DD27D000C5246 /* AppDelegate.swift */,
 				478918311F90B49B00450F21 /* MainTabBarViewController.swift */,
 				B91802381F7DD27D000C5246 /* FirstViewController.swift */,
+				B96C34631FAD23E8005D9D66 /* RegisterKitViewController.swift */,
 				B9B302191F7E2DF600C5FD04 /* VCMapView.swift */,
 				111BDAFD1FACEEBD00A67CF2 /* Raycast.swift */,
 				545A894F1FA6A87300BB73CD /* MapAnnotations */,
@@ -425,6 +428,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Preventanyl/Pods-Preventanyl-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/SHSPhoneComponent/SHSPhoneComponent.framework",
@@ -433,6 +437,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SHSPhoneComponent.framework",
@@ -556,6 +561,7 @@
 				546AEEE71FA3EC92007DD24B /* Notifications.swift in Sources */,
 				546AEEE61FA3EC92007DD24B /* Location.swift in Sources */,
 				B9B302181F7E2B5E00C5FD04 /* Marker.swift in Sources */,
+				B96C34641FAD23E8005D9D66 /* RegisterKitViewController.swift in Sources */,
 				478918271F90ACFF00450F21 /* AccountUINavigaionController.swift in Sources */,
 				4745D62F1FA5378D00CD90C1 /* StaticKit.swift in Sources */,
 				545A89521FA6A87300BB73CD /* AbstractAnnotation.swift in Sources */,
