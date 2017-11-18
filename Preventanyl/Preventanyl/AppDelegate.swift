@@ -11,28 +11,43 @@ import MapKit
 import CoreLocation
 import UserNotifications
 import Firebase
+import FirebaseMessaging
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
     let locationManager = CLLocationManager ()
-    let center = UNUserNotificationCenter.current()
+    // let center = UNUserNotificationCenter.current()
 
     private var startTime: Date? //An instance variable, will be used as a previous location time.
 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FirebaseApp.configure()
         locationManager.delegate = self
-        //locationManager.requestWhenInUseAuthorization()
-        // application.registerUserNotificationSettings (UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
-        // UIApplication.shared.cancelAllLocalNotifications ()
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
         
-        // Override point for customization after application launch.
-        // let center = UNUserNotificationCenter.current()
-        UNUserNotificationCenter.current().delegate = self
+        application.registerForRemoteNotifications()
+        // Subscribe to new topics
+        // FIRMessaging.messaging().subscribe(toTopic: "/topics/condition1")
+        
+        FirebaseApp.configure()
+        // UNUserNotificationCenter.current().delegate = self
+
+        /*
         center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
             // Enable or disable features based on authorization.
             if((error != nil)) {
@@ -41,14 +56,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 print("Request authorization succeeded!")
                 self.locationManager.requestLocation()
             }
-        }
+        } */
         return true
     }
     
-    func userNotificationCenter(_: UNUserNotificationCenter, willPresent _: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+    /* func userNotificationCenter(_: UNUserNotificationCenter, willPresent _: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
     {
         completionHandler([.alert, .sound])
-    }
+    } */
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
     {
@@ -57,22 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
         
         Location.locationAuthorizationStatus(viewController: viewController, status: status)
-        
-//        switch status
-//        {
-//        case .authorizedAlways:
-//            print("always is authorized")
-//            locationManager.requestLocation()
-//        case .authorizedWhenInUse:
-//            print("when in use")
-//            locationManager.requestLocation()
-//        case .denied:
-//            print("denied")
-//        case .notDetermined:
-//            print("not determined")
-//        case .restricted:
-//            print("restricted")
-//        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -146,18 +145,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    //disable push notification; have put something in info.plist to disable swizzling
-    //https://firebase.google.com/docs/auth/ios/phone-auth
-    func application(_ application: UIApplication,
-                     didReceiveRemoteNotification notification: [AnyHashable : Any],
-                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        if Auth.auth().canHandleNotification(notification) {
-            return
-        }
-        // This notification is not auth related, developer should handle it.
-    }
-    
-    
     // For iOS 9+
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
         if Auth.auth().canHandle(url) {
@@ -167,8 +154,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         return false
     }
     
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        var token = ""
+        for i in 0..<deviceToken.count {
+            token = token + String (format: "%02.2hhx", arguments: [deviceToken[i]])
+        }
+        print ("Registration succeeded! Token: ", token);
+    }
     
-
-
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print ("Registration failed!")
+        print (error)
+    }
+    
+    // Firebase notification received
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter,  willPresent notification: UNNotification, withCompletionHandler   completionHandler: @escaping (_ options:   UNNotificationPresentationOptions) -> Void) {
+        
+        // custom code to handle push while app is in the foreground
+        print("Handle push from foreground\(notification.request.content.userInfo)")
+        
+        let dict = notification.request.content.userInfo["aps"] as! NSDictionary
+        let d : [String : Any] = dict["alert"] as! [String : Any]
+        let body : String = d["body"] as! String
+        let title : String = d["title"] as! String
+        print("Title:\(title) + body:\(body)")
+        self.showAlertAppDelegate(title: title,message:body,buttonTitle:"ok",window:self.window!)
+        
+    }
+    
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        // if you set a member variable in didReceiveRemoteNotification, you  will know if this is from closed or background
+        print("Handle push from background or closed\(response.notification.request.content.userInfo)")
+    }
+    
+    func showAlertAppDelegate(title: String,message : String,buttonTitle: String,window: UIWindow){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.default, handler: nil))
+        window.rootViewController?.present(alert, animated: false, completion: nil)
+    }
+    // Firebase ended here
+    
 }
 

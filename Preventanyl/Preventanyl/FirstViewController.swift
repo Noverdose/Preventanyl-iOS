@@ -24,7 +24,7 @@ class FirstViewController: UIViewController {
     
     var centered: Bool = false
     
-    //var marker: Marker?
+    // var marker: Marker?
     var selfAnnotation: MKPointAnnotation?
     
     var staticKitMarkerMap: Dictionary<Int32, Marker> = Dictionary<Int32, Marker>()
@@ -35,7 +35,7 @@ class FirstViewController: UIViewController {
     // firebase database refs
     lazy var ref: DatabaseReference = Database.database().reference()
     var staticKitsRef: DatabaseReference!
-    //all the static kits
+    // all the static kits
     var allStaticKits: [StaticKit]!
     
     override func viewDidLoad() {
@@ -43,7 +43,7 @@ class FirstViewController: UIViewController {
         
         MapView.delegate = self
         
-        //firebase database reference of statickits
+        // firebase database reference of statickits
         staticKitsRef = ref.child("statickits")
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -79,7 +79,7 @@ class FirstViewController: UIViewController {
          discipline: "Sculpture",
          coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661)) */
         
-        //addDummyData()
+        // addDummyData()
         
         let point = Coordinates(lat: 2, long: 2)
         let p2 = Coordinates(lat: 0, long: 0)
@@ -127,7 +127,7 @@ class FirstViewController: UIViewController {
         allStaticKits = [StaticKit]()
         
         // Listen for new staticKits in the Firebase database
-        //////it is aysn.kits will be added one by one;
+        // it is aysn.kits will be added one by one;
         //
         staticKitsRef.observe(.childAdded, with: {[weak self] (snapshot) -> Void in
             
@@ -163,17 +163,17 @@ class FirstViewController: UIViewController {
             
             print("childRemoved")
             
-            //get  value as dictionary
+            // get value as dictionary
             guard let dict = snapshot.value as? [String:Any] else {
                 print("childRemoved: Unable to parse snapshot.value from firebase!")
                 return
             }
-            //get the userid
+            // get the userid
             guard let rmuid = dict["userId"] as? String else {
                 print("childRemoved: userId not found!")
                 return
             }
-            //remove
+            // remove
             guard let kit = StaticKit(From: snapshot) else {
                 print("childRemoved: Unable to parse Kit from firebase!")
                 return
@@ -193,13 +193,13 @@ class FirstViewController: UIViewController {
             print("childChanged")
             
             
-            //remove
+            // remove
             guard let dict = snapshot.value as? [String:Any] else { return }
             guard let changeuid = dict["userId"] as? String else {return }
             if let index = self?.allStaticKits.index(where: {$0.userId == changeuid}) {
                 self?.allStaticKits.remove(at: index)
             }
-            //add back
+            // add back
             if let addedskit = StaticKit(From: snapshot) {
                 self?.allStaticKits.append(addedskit)
 //                print("start printing\n")
