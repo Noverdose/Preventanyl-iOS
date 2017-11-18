@@ -10,9 +10,6 @@ import Foundation
 import Firebase
 import FirebaseDatabase
 
-
-
-
 class StaticKit: NSObject {
     var address : Address
     var comments : String
