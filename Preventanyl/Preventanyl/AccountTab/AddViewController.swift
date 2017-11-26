@@ -12,6 +12,17 @@ import Firebase
 
 class AddViewController: FormViewController {
 
+
+    @IBAction func backtapped(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+
+    @IBAction func savetapped(_ sender: UIBarButtonItem) {
+        formSub()
+        
+    }
+    
     var ref: DatabaseReference!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +93,11 @@ class AddViewController: FormViewController {
     // Function called when submit button is pressed
     // To post to server
     func submitNaloxeneKit(cell: ButtonCellOf<String>, row: ButtonRow) {
+        formSub()
+        
+    }
+    
+    func formSub() {
         print("tapped!")
         // Get all values in form as an array, including hidden
         let dict = form.values (includeHidden: true)
@@ -121,10 +137,19 @@ class AddViewController: FormViewController {
                 //call the func for getting the dictionary object which can be converted to josn
                 //in firebase.
                 //insert this kit into db
-                id.setValue(sta.get_StaticKit_Dict_upload())
+                
+                id.setValue(sta.get_StaticKit_Dict_upload()) { (error, ref) -> Void in
+                    let alert = UIAlertController(title: "Error", message: "Fail to add kit", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    // Add okay action to alert, to return back to the form
+                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                    
+                    // Present the alert to the user
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
-    
-    
+            
+            
             
         } else {
             // Alert the user that there are fields that have not been filled out
@@ -137,7 +162,6 @@ class AddViewController: FormViewController {
             // Present the alert to the user
             self.present(alert, animated: true, completion: nil)
         }
-        
     }
 
     

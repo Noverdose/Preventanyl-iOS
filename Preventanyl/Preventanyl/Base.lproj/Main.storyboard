@@ -366,20 +366,37 @@
             </objects>
             <point key="canvasLocation" x="849" y="1516"/>
         </scene>
-        <!--Add View Controller-->
+        <!--Title-->
         <scene sceneID="lsg-T5-PTW">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5l-1O-csx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="kDm-To-h9G" customClass="AddViewController" customModule="Preventanyl" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qn3-BN-zue">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="JnL-PC-AYy"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="uAS-gE-t1n"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Title" id="RrD-cI-sWH">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="oH2-iK-MWg">
+                            <connections>
+                                <action selector="backtapped:" destination="kDm-To-h9G" id="9zn-Ut-ONi"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="M5s-Vo-7Fv">
+                            <connections>
+                                <action selector="savetapped:" destination="kDm-To-h9G" id="Lm4-sC-Hyx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W5l-1O-csx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1603" y="1511"/>
+            <point key="canvasLocation" x="1639" y="1516"/>
         </scene>
     </scenes>
     <resources>
