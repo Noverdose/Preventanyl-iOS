@@ -77,14 +77,13 @@
         <!--Profile-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="SecondViewController" id="8rJ-Kc-sve" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="8rJ-Kc-sve" customClass="LoginViewController" customModule="Preventanyl" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="center" ambiguous="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="FVZ-Eu-nA9">
-                                <rect key="frame" x="45" y="189" width="230" height="50"/>
+                            <textField opaque="NO" contentMode="center" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="FVZ-Eu-nA9">
+                                <rect key="frame" x="45" y="133" width="230" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="6Uc-5C-cvm"/>
                                 </constraints>
@@ -97,13 +96,13 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="editChanged:" destination="8rJ-Kc-sve" eventType="editingChanged" id="j51-Tv-dLW"/>
-                                    <action selector="next:" destination="8rJ-Kc-sve" eventType="editingDidEnd" id="QmZ-NY-d4x"/>
-                                    <action selector="valueChanged:" destination="8rJ-Kc-sve" eventType="valueChanged" id="DOg-GK-Wlx"/>
+                                    <action selector="editChanged:" destination="8rJ-Kc-sve" eventType="editingDidEnd" id="Fp9-FG-3vx"/>
+                                    <action selector="next:" destination="8rJ-Kc-sve" eventType="editingDidEnd" id="aO6-mc-QXA"/>
+                                    <action selector="valueChanged:" destination="8rJ-Kc-sve" eventType="editingDidEnd" id="9if-w5-Wj7"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HM9-Cy-MLB">
-                                <rect key="frame" x="45" y="334" width="230" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HM9-Cy-MLB">
+                                <rect key="frame" x="45" y="278" width="230" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ymU-TD-uwK"/>
@@ -118,17 +117,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="loginClick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="TOQ-1G-uCS"/>
+                                    <action selector="loginClick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="fTa-FY-sxW"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Register" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4w-Cz-G02">
-                                <rect key="frame" x="45" y="116" width="230" height="48"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="EPi-rA-QWG">
-                                <rect key="frame" x="45" y="259" width="230" height="50"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="EPi-rA-QWG">
+                                <rect key="frame" x="45" y="203" width="230" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="rbK-dg-wqp"/>
                                 </constraints>
@@ -141,16 +134,19 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Wv-iJ-jXd">
-                                <rect key="frame" x="136" y="424" width="51" height="31"/>
-                                <connections>
-                                    <action selector="trackSwitchClick:" destination="8rJ-Kc-sve" eventType="valueChanged" id="DB1-Pj-MmN"/>
-                                </connections>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Wv-iJ-jXd">
+                                <rect key="frame" x="136" y="368" width="51" height="31"/>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Track Portable Kit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQI-Zr-fau">
-                                <rect key="frame" x="85" y="392" width="151.5" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track Portable Kit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQI-Zr-fau">
+                                <rect key="frame" x="85" y="336" width="151.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4w-Cz-G02">
+                                <rect key="frame" x="45" y="60" width="230" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -165,10 +161,10 @@
                             <constraint firstItem="EPi-rA-QWG" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="45" id="Mo8-iy-PW4"/>
                             <constraint firstItem="FVZ-Eu-nA9" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="45" id="N2t-sB-Qfr"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="HM9-Cy-MLB" secondAttribute="trailing" constant="45" id="NMb-4K-h6p"/>
+                            <constraint firstItem="e4w-Cz-G02" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="40" id="Obp-fS-hXh" userLabel="Register.top = Safe Area.top + 50"/>
                             <constraint firstItem="7Wv-iJ-jXd" firstAttribute="top" secondItem="nQI-Zr-fau" secondAttribute="bottom" constant="8" id="Oxc-Du-N4C"/>
                             <constraint firstItem="nQI-Zr-fau" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Vuk-rb-DMd"/>
                             <constraint firstItem="nQI-Zr-fau" firstAttribute="top" secondItem="HM9-Cy-MLB" secondAttribute="bottom" constant="8" id="XZa-vY-swi"/>
-                            <constraint firstItem="FVZ-Eu-nA9" firstAttribute="top" secondItem="e4w-Cz-G02" secondAttribute="bottom" constant="25" id="b1s-hL-DOg"/>
                             <constraint firstItem="e4w-Cz-G02" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="45" id="kMV-sB-gn6"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="FVZ-Eu-nA9" secondAttribute="trailing" constant="45" id="lNI-hn-Ofb"/>
                             <constraint firstItem="7Wv-iJ-jXd" firstAttribute="centerX" secondItem="nQI-Zr-fau" secondAttribute="centerX" id="oBw-9a-3jR"/>
@@ -183,15 +179,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="profile" selectedImage="profile" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="password" destination="EPi-rA-QWG" id="vJ8-L7-vSS"/>
-                        <outlet property="registerLoginButton" destination="HM9-Cy-MLB" id="tWX-KP-wcG"/>
-                        <outlet property="registerLoginLabel" destination="e4w-Cz-G02" id="25f-uG-Z4k"/>
-                        <outlet property="trackMeAlwaysSwitch" destination="7Wv-iJ-jXd" id="6XR-fO-DbY"/>
-                        <outlet property="username" destination="FVZ-Eu-nA9" id="QkJ-fi-Inv"/>
+                        <outlet property="email" destination="FVZ-Eu-nA9" id="IGz-Sy-FaW"/>
+                        <outlet property="password" destination="EPi-rA-QWG" id="rUb-hk-Tew"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1663" y="756"/>
+            <point key="canvasLocation" x="864" y="754"/>
         </scene>
         <!--Phone Login View Controller-->
         <scene sceneID="2dX-a2-vAG">
@@ -284,7 +278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nGb-VE-Du8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="909" y="756"/>
+            <point key="canvasLocation" x="2372" y="755"/>
         </scene>
         <!--Main Tab Bar View Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -324,7 +318,7 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="vNr-5N-ejS" kind="show" identifier="UserMenuSegue" id="DzD-CF-93k"/>
-                        <segue destination="cUV-td-hAB" kind="show" identifier="RegisterSegue" id="02n-Me-y7y"/>
+                        <segue destination="8rJ-Kc-sve" kind="show" identifier="RegisterSegue" id="cSc-fy-IiJ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UjH-bN-JPc" userLabel="First Responder" sceneMemberID="firstResponder"/>

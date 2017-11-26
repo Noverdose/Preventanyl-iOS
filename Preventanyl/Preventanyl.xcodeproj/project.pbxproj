@@ -35,6 +35,7 @@
 		B9B302181F7E2B5E00C5FD04 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B302171F7E2B5E00C5FD04 /* Marker.swift */; };
 		B9B3021A1F7E2DF600C5FD04 /* VCMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B302191F7E2DF600C5FD04 /* VCMapView.swift */; };
 		DDE3DDC875905F3211F604D7 /* Pods_PreventanylUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A29B8ADB64CEFA225F9029EF /* Pods_PreventanylUITests.framework */; };
+		E9FF81FA1FC8D7EC00411F12 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FF81F91FC8D7EC00411F12 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		B9B302191F7E2DF600C5FD04 /* VCMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCMapView.swift; sourceTree = "<group>"; };
 		B9E963841FBF79C1004B1ED6 /* Preventanyl.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Preventanyl.entitlements; sourceTree = "<group>"; };
 		D2353CA4DBCF99D64B8E0622 /* Pods-PreventanylUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PreventanylUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PreventanylUITests/Pods-PreventanylUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E9FF81F91FC8D7EC00411F12 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EDE8EA80B4194E0446C8EF0C /* Pods-Preventanyl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preventanyl.release.xcconfig"; path = "Pods/Target Support Files/Pods-Preventanyl/Pods-Preventanyl.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +159,7 @@
 				4789182A1F90B3A200450F21 /* AccountMenuViewController.xib */,
 				475E5DE91F9166A300CF82E0 /* Userinfo.swift */,
 				473DA4E51FACFE220035AEED /* PhoneLoginViewController.swift */,
+				E9FF81F91FC8D7EC00411F12 /* LoginViewController.swift */,
 			);
 			path = AccountTab;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				478918321F90B49B00450F21 /* MainTabBarViewController.swift in Sources */,
 				B9B3021A1F7E2DF600C5FD04 /* VCMapView.swift in Sources */,
 				B91802371F7DD27D000C5246 /* AppDelegate.swift in Sources */,
+				E9FF81FA1FC8D7EC00411F12 /* LoginViewController.swift in Sources */,
 				B91802391F7DD27D000C5246 /* FirstViewController.swift in Sources */,
 				4789182B1F90B3A200450F21 /* UserMenuViewController.swift in Sources */,
 				111BDAFE1FACEEBD00A67CF2 /* Raycast.swift in Sources */,
