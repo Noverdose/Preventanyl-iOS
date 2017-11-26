@@ -10,6 +10,9 @@ import UIKit
 import Eureka
 import Firebase
 
+import Foundation
+import SystemConfiguration
+
 class AddViewController: FormViewController {
 
 
@@ -17,9 +20,49 @@ class AddViewController: FormViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    //func to check network connection
+    func isInternetAvailable() -> Bool {
+        
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        guard let defaultRouteReachability = withUnsafePointer(to: &zeroAddress, {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+                SCNetworkReachabilityCreateWithAddress(nil, $0)
+            }
+        }) else {
+            return false
+        }
+        
+        var flags: SCNetworkReachabilityFlags = []
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
+            return false
+        }
+        
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        
+        return (isReachable && !needsConnection)
+    }
+    
 
     @IBAction func savetapped(_ sender: UIBarButtonItem) {
-        formSub()
+        //
+        if(isInternetAvailable()) {
+            self.formSub()
+        } else {
+        
+            let alert = UIAlertController(title: "Error", message: "No internet found.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            // Add okay action to alert, to return back to the form
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+            
+            // Present the alert to the user
+            self.present(alert, animated: true, completion: nil)
+        }
+            
+        
         
     }
     
@@ -138,15 +181,7 @@ class AddViewController: FormViewController {
                 //in firebase.
                 //insert this kit into db
                 
-                id.setValue(sta.get_StaticKit_Dict_upload()) { (error, ref) -> Void in
-                    let alert = UIAlertController(title: "Error", message: "Fail to add kit", preferredStyle: UIAlertControllerStyle.alert)
-                    
-                    // Add okay action to alert, to return back to the form
-                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
-                    
-                    // Present the alert to the user
-                    self.present(alert, animated: true, completion: nil)
-                }
+                id.setValue(sta.get_StaticKit_Dict_upload())
             }
             
             

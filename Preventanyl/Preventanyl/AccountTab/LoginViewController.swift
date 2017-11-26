@@ -9,6 +9,9 @@
 import UIKit
 import Firebase
 
+import Foundation
+import SystemConfiguration
+
 class LoginViewController: UIViewController, UITextFieldDelegate  {
 
     static let MODE_LOGIN    = 1
@@ -34,9 +37,47 @@ class LoginViewController: UIViewController, UITextFieldDelegate  {
         
     }
     
+    //func to check network connection
+    func isInternetAvailable() -> Bool {
+        
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        guard let defaultRouteReachability = withUnsafePointer(to: &zeroAddress, {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+                SCNetworkReachabilityCreateWithAddress(nil, $0)
+            }
+        }) else {
+            return false
+        }
+        
+        var flags: SCNetworkReachabilityFlags = []
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
+            return false
+        }
+        
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        
+        return (isReachable && !needsConnection)
+    }
+    
     @IBAction func loginClick(_ sender: Any) {
+        print(isInternetAvailable())
+        if(!isInternetAvailable()) {
+            let alert = UIAlertController(title: "Error", message: "No internet found.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            // Add okay action to alert, to return back to the form
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+            
+            // Present the alert to the user
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         performLogin()
     }
+    
     
     func notImplemented(actionName: String) {
         let messageString = actionName + " Not Yet Implemented!"
