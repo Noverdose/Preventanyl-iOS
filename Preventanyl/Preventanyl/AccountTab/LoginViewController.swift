@@ -71,6 +71,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate  {
                     Userinfo.islogin = true
                     //Userinfo.authVerificationID = verificationID
                     let navControllerArr = [(self.storyboard?.instantiateViewController(withIdentifier: "UserMenuViewController"))!]
+                    
                     self.navigationController?.setViewControllers(navControllerArr, animated: true)
 
                     // [END_EXCLUDE]
