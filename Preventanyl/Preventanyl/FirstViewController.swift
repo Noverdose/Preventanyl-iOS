@@ -90,6 +90,7 @@ class FirstViewController: UIViewController {
         poly.append(Coordinates(lat: 1, long: 3))
         print("The point is inside  the polygon: \(Raycast.isInside(point: point, polygon: poly))")
         print("The point is inside  the polygon: \(Raycast.isInside(point: p2, polygon: poly))")
+        addMapTrackingButton()
     }
     
     func updateUserLocation(location: CLLocation) {
@@ -211,8 +212,6 @@ class FirstViewController: UIViewController {
         })
         
         addDummyData()
-        
-        
         
     }
     

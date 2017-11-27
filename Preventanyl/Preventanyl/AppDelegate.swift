@@ -180,7 +180,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         let title : String = d["title"] as! String
         print("Title:\(title) + body:\(body)")
         self.showAlertAppDelegate(title: title,message:body,buttonTitle:"ok",window:self.window!)
-        
     }
     
     @available(iOS 10.0, *)
