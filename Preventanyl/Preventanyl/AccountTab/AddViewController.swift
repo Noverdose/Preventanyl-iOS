@@ -13,6 +13,8 @@ import Firebase
 import Foundation
 import SystemConfiguration
 
+import CoreLocation
+
 class AddViewController: FormViewController {
 
 
@@ -105,6 +107,14 @@ class AddViewController: FormViewController {
                 $0.title = "Street Address"
                 $0.placeholder = "1234 Cool Avenue"
             }
+            
+            <<< LocationRow(){
+                $0.tag = "CoordinatesRow"
+                $0.title = "Pick the Location"
+                $0.value = CLLocation(latitude: 49.2827, longitude: -123.1207)
+            }
+            
+            
             // Display Information
             +++ Section("Display Information")
             <<< TextRow() {
@@ -155,7 +165,8 @@ class AddViewController: FormViewController {
             let displayName:String = dict["DNameRow"] as? String,
             let phoneNumber:String = dict["PhoneRow"] as? String {
             // Get comments not in the if statement as it is not a required value
-            let comments:String? = dict["CommentsRow"] as? String
+            let comments:String? = dict["CommentsRow"] as? String ?? ""
+            let coordinates: CLLocation = dict["CoordinatesRow"] as! CLLocation
             print (city)
             print (country)
             print (postalCode)
@@ -163,7 +174,12 @@ class AddViewController: FormViewController {
             print (address)
             print (displayName)
             print (phoneNumber)
+            print(coordinates.coordinate.latitude)
+            print(coordinates.coordinate.longitude)
             // code to insert data to firebase database directly
+            
+            let latval = coordinates.coordinate.latitude
+            let longval = coordinates.coordinate.longitude
             
             //get the autoid reference for the added kit
             let id = ref.child("statickits").childByAutoId()
@@ -171,17 +187,20 @@ class AddViewController: FormViewController {
             //if user id can be obtained
             if let uid = Auth.auth().currentUser?.uid {
                 //coordinate to be implemented in the future
-                let c = Coordinates(lat: 1,long: 2)
+                let c = Coordinates(lat: latval,long: longval)
                 //construct the address data to insert into firebase db
                 let addressoj = Address(city: city, country: country, postalCode: postalCode, provincestate: province, streetAddress: address)
                 //construct the static kit data; it is what will be added in firebase db
-                let sta = StaticKit(address: addressoj, comments: comments!, coordinates: c, displayName: displayName, id: idstring, phone: phoneNumber, userId: uid)
+                let sta = StaticKit(address: addressoj, comments: comments ?? "", coordinates: c, displayName: displayName, id: idstring, phone: phoneNumber, userId: uid)
                 
                 //call the func for getting the dictionary object which can be converted to josn
                 //in firebase.
                 //insert this kit into db
                 
                 id.setValue(sta.get_StaticKit_Dict_upload())
+                
+                //finished
+                navigationController?.popViewController(animated: true)
             }
             
             
