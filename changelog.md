@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](	)
 
 ## - 2017-11-18 - Yudhvir
 ### Added
+- Center on user location button added
+
+## - 2017-11-18 - Yudhvir
+### Added
 - Apple Push Notifications
 - Firebase Push Notifications
 - Firebase Analytics Cocoapod
