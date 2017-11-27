@@ -21,14 +21,28 @@ class StaticKit: NSObject {
     
     //used when getting data from firebase
     init?(From snapshot: DataSnapshot) {
-        guard let dict = snapshot.value as? [String:Any] else { return nil }
-        guard let adressObject = dict["address"] as? [String : String] else { return nil }
-        guard let comments = dict["comments"]  as? String else { return nil }
-        guard let coordinatesObject = dict["coordinates"] as? [String : Double] else { return nil }
-        guard let displayName = dict["displayName"]  as? String else { return nil }
-        guard let id = dict["id"]  as? String else { return nil }
-        guard let phone = dict["phone"]  as? String else { return nil }
-        guard let userId = dict["userId"]  as? String else { return nil }
+        guard let dict = snapshot.value as? [String:Any] else { print("dict is nil")
+            return nil }
+        guard let adressObject = dict["address"] as? [String : String] else {
+            print("adressObject is nil")
+            return nil }
+        let comments = dict["comments"]  as? String ?? ""
+        guard let coordinatesObject = dict["coordinates"] as? [String : Double] else {
+            print("coordinatesObject is nil")
+            return nil }
+        guard let displayName = dict["displayName"]  as? String else {
+            print("displayName is nil")
+            return nil }
+        guard let id = dict["id"]  as? String else {
+            print("id is nil")
+            return nil }
+        guard let phone = dict["phone"]  as? String else {
+            print("phone is nil")
+            return nil }
+        guard let userId = dict["userId"]  as? String else
+        {
+            print("userId is nil")
+            return nil }
     
         self.address  = Address(addressOJ: adressObject)
         self.coordinates = Coordinates(coorOJ: coordinatesObject)
