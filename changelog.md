@@ -2,6 +2,16 @@
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](	)
+
+## - 2017-11-03 - Kent Huang
+### Added
+- Email login
+- Get kits and display kits in tableview
+-Kit add function in user menu
+- Location picker in kit add function
+-Show kit detail when table cell is tapped
+-kit delete function in kit detail view
+
 ## - 2017-11-18 - Yudhvir
 ### Added
 - Apple Push Notifications
