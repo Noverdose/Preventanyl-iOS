@@ -56,19 +56,6 @@ class UserMenuViewController: UITableViewController{
         
         ref = Database.database().reference()
 
-        //print(Auth.auth().currentUser?.uid)
-        
-        //ref.child("statickits").childByAutoId().setValue(Coordinates(lat: 1,long: 22).get_Dict_upload())
-        //ref.child("statickits").childByAutoId().setValue(Address(city: "c", country: "c",postalCode : "p",provincestate:"pp",streetAddress:"sa").get_Address_Dict_upload())
-//        let a = Address(city: "c", country: "c",postalCode : "p",provincestate:"pp",streetAddress:"sa")
-//
-//        let c = Coordinates(lat: 1,long: 22)
-//        let sta = StaticKit(address: a, comments: "com", coordinates: c, displayName: "dis", id: "id", phone: "phon", userId: "us")
-//
-//        ref.child("statickits").childByAutoId().setValue(sta.get_StaticKit_Dict_upload())
-        
-
-        // Do any additional setup after loading the view.
     }
     
     var kits:[StaticKit]!
@@ -114,6 +101,29 @@ class UserMenuViewController: UITableViewController{
         let navControllerArr = [(storyboard?.instantiateViewController(withIdentifier: "LoginViewController"))!]
         //perform the view switch
         navigationController?.setViewControllers(navControllerArr, animated: true)
+    }
+    
+    // method to run when table view cell is tapped
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // Segue to the second view controller
+        self.performSegue(withIdentifier: "Todetail", sender: self)
+    }
+    
+    // This function is called before the segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if(segue.identifier == "Todetail") {
+            
+            // get a reference to the second view controller
+            let secondViewController = segue.destination as! KitDetailViewController
+            
+            let selectedIndexPath = self.tableView.indexPathForSelectedRow!
+            
+            
+            // set a variable in the second view controller with the data to pass
+            secondViewController.kit = kits?[selectedIndexPath.row]
+        }
     }
 
 }

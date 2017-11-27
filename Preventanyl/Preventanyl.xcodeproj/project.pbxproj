@@ -20,6 +20,7 @@
 		4789182B1F90B3A200450F21 /* UserMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478918291F90B3A200450F21 /* UserMenuViewController.swift */; };
 		4789182C1F90B3A200450F21 /* AccountMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4789182A1F90B3A200450F21 /* AccountMenuViewController.xib */; };
 		478918321F90B49B00450F21 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478918311F90B49B00450F21 /* MainTabBarViewController.swift */; };
+		47A2F4901FCBD51800B789BE /* KitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A2F48F1FCBD51800B789BE /* KitDetailViewController.swift */; };
 		545A89521FA6A87300BB73CD /* AbstractAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A89501FA6A87300BB73CD /* AbstractAnnotation.swift */; };
 		545A89531FA6A87300BB73CD /* OverdoseAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A89511FA6A87300BB73CD /* OverdoseAnnotation.swift */; };
 		546AEEE61FA3EC92007DD24B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546AEEE41FA3EC92007DD24B /* Location.swift */; };
@@ -76,6 +77,7 @@
 		478918291F90B3A200450F21 /* UserMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuViewController.swift; sourceTree = "<group>"; };
 		4789182A1F90B3A200450F21 /* AccountMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountMenuViewController.xib; sourceTree = "<group>"; };
 		478918311F90B49B00450F21 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		47A2F48F1FCBD51800B789BE /* KitDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitDetailViewController.swift; sourceTree = "<group>"; };
 		545A89501FA6A87300BB73CD /* AbstractAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractAnnotation.swift; sourceTree = "<group>"; };
 		545A89511FA6A87300BB73CD /* OverdoseAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverdoseAnnotation.swift; sourceTree = "<group>"; };
 		546AEEE41FA3EC92007DD24B /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				E9FF81FB1FCA453500411F12 /* KitItemTableViewCell.swift */,
 				E9FF81FD1FCA675500411F12 /* AddViewController.swift */,
 				4708F2701FCB8FE50061ECC6 /* CustomRow.swift */,
+				47A2F48F1FCBD51800B789BE /* KitDetailViewController.swift */,
 			);
 			path = AccountTab;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				B96C34641FAD23E8005D9D66 /* RegisterKitViewController.swift in Sources */,
 				478918271F90ACFF00450F21 /* AccountUINavigaionController.swift in Sources */,
 				E9FF81FE1FCA675500411F12 /* AddViewController.swift in Sources */,
+				47A2F4901FCBD51800B789BE /* KitDetailViewController.swift in Sources */,
 				4745D62F1FA5378D00CD90C1 /* StaticKit.swift in Sources */,
 				545A89521FA6A87300BB73CD /* AbstractAnnotation.swift in Sources */,
 				478918321F90B49B00450F21 /* MainTabBarViewController.swift in Sources */,
