@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     private var startTime: Date? //An instance variable, will be used as a previous location time.
     
-    static var fcmtoken = ""
+    static var fcmtoken:String? = ""
 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -61,7 +61,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         } */
         // AppDelegate.token = Messaging.messaging().fcmToken
         // print("FCM token: \(token ?? "")")
-        AppDelegate.fcmtoken = Messaging.messaging().fcmToken!
+        
+        // print("FCM token: \(AppDelegate.fcmtoken ?? "")")
+        // Messaging.messaging()
         
         return true
     }
@@ -165,7 +167,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         for i in 0..<deviceToken.count {
             token = token + String (format: "%02.2hhx", arguments: [deviceToken[i]])
         }
-        
         print ("Registration succeeded! Token: ", token);
     }
     

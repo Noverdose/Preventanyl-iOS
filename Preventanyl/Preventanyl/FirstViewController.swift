@@ -294,7 +294,8 @@ class FirstViewController: UIViewController {
             print("not yet implemented")
             self.stopTimer()
         }))
-        alert!.addAction(UIAlertAction(title: "Notify Now", style: UIAlertActionStyle.default, handler: { _ in self.stopTimer()}))
+        alert!.addAction(UIAlertAction(title: "Notify Now", style: UIAlertActionStyle.default, handler: { _ in self.sendAngels()}))
+        
         self.present(alert!, animated: true, completion: nil)
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
@@ -305,6 +306,27 @@ class FirstViewController: UIViewController {
         timer?.invalidate()
     }
     
+    func sendAngels () {
+        stopTimer ()
+        print ("https://preventanyl.com/regionfinder.php?lat=\(Location.currentLocation.coordinate.latitude)&long=\(Location.currentLocation.coordinate.longitude)")
+        if let url = URL(string: "https://preventanyl.com/regionfinder.php?lat=\(Location.currentLocation.coordinate.latitude)&long=\(Location.currentLocation.coordinate.longitude)") {
+            var request = URLRequest(url: url)
+            request.setValue("Preventanyl App", forHTTPHeaderField: "User-Agent")
+            
+            let task = URLSession.shared.dataTask(with: request) {data, response, error in
+                
+                print (error)
+                
+                if let data = data {
+                    print (data)
+                    // data is a response string
+                }
+            }
+            
+            task.resume()
+        }
+    }
+    
     @objc func update() {
         if(count > 0 && alert != nil) {
             count = count - 1
@@ -312,7 +334,7 @@ class FirstViewController: UIViewController {
         } else {
             timer?.invalidate()
             alert?.dismiss(animated: true, completion: {
-                
+            self.sendAngels()
             })
         }
     }
