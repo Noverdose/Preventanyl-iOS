@@ -23,6 +23,7 @@
 		47A2F4901FCBD51800B789BE /* KitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A2F48F1FCBD51800B789BE /* KitDetailViewController.swift */; };
 		545A89521FA6A87300BB73CD /* AbstractAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A89501FA6A87300BB73CD /* AbstractAnnotation.swift */; };
 		545A89531FA6A87300BB73CD /* OverdoseAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A89511FA6A87300BB73CD /* OverdoseAnnotation.swift */; };
+		545EA4E91FCE03A60048ED58 /* Overdose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545EA4E81FCE03A60048ED58 /* Overdose.swift */; };
 		546AEEE61FA3EC92007DD24B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546AEEE41FA3EC92007DD24B /* Location.swift */; };
 		546AEEE71FA3EC92007DD24B /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546AEEE51FA3EC92007DD24B /* Notifications.swift */; };
 		B4EC6221E230C1797C3656F6 /* Pods_PreventanylTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8728B3CC60D9D5827F780470 /* Pods_PreventanylTests.framework */; };
@@ -81,6 +82,7 @@
 		47A2F48F1FCBD51800B789BE /* KitDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitDetailViewController.swift; sourceTree = "<group>"; };
 		545A89501FA6A87300BB73CD /* AbstractAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractAnnotation.swift; sourceTree = "<group>"; };
 		545A89511FA6A87300BB73CD /* OverdoseAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverdoseAnnotation.swift; sourceTree = "<group>"; };
+		545EA4E81FCE03A60048ED58 /* Overdose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overdose.swift; sourceTree = "<group>"; };
 		546AEEE41FA3EC92007DD24B /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		546AEEE51FA3EC92007DD24B /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		8728B3CC60D9D5827F780470 /* Pods_PreventanylTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PreventanylTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,6 +227,7 @@
 				4745D6301FA53B1600CD90C1 /* GoogleService-Info.plist */,
 				4745D62D1FA5376000CD90C1 /* FirebaseObject */,
 				546AEEE41FA3EC92007DD24B /* Location.swift */,
+				545EA4E81FCE03A60048ED58 /* Overdose.swift */,
 				546AEEE51FA3EC92007DD24B /* Notifications.swift */,
 				B91802361F7DD27D000C5246 /* AppDelegate.swift */,
 				478918311F90B49B00450F21 /* MainTabBarViewController.swift */,
@@ -600,6 +603,7 @@
 				B91802371F7DD27D000C5246 /* AppDelegate.swift in Sources */,
 				E9FF81FA1FC8D7EC00411F12 /* LoginViewController.swift in Sources */,
 				B91802391F7DD27D000C5246 /* FirstViewController.swift in Sources */,
+				545EA4E91FCE03A60048ED58 /* Overdose.swift in Sources */,
 				4789182B1F90B3A200450F21 /* UserMenuViewController.swift in Sources */,
 				111BDAFE1FACEEBD00A67CF2 /* Raycast.swift in Sources */,
 				E9FF81FC1FCA453500411F12 /* KitItemTableViewCell.swift in Sources */,
