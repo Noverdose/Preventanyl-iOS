@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreLocation
+import Firebase
 
 class Location {
 
@@ -19,6 +20,12 @@ class Location {
     static let REQUESTED_INUSE_AUTHORIZATION = "REQUESTED_INUSE_AUTHORIZATION"
     static let TRACK_ME_AT_ALL_TIMES = "trackMeAtAllTimes"
     static var currentLocation = CLLocation()
+    static var id = String(arc4random())
+    
+    // firebase database refs
+    lazy var ref: DatabaseReference = Database.database().reference()
+    static var locationAngelsRef: DatabaseReference!
+    
     
     static var requestedAuthorizationStatus: CLAuthorizationStatus = CLAuthorizationStatus.notDetermined
     
@@ -197,6 +204,18 @@ class Location {
 
         currentLocation = location
         Notifications.post(messageName: LOCATION_CHANGED, object: location, userInfo: nil)
+        
+        let loc = ["lat" : location.coordinate.latitude,
+                   "lng" : location.coordinate.longitude] as [String : Any]
+        
+        let value = ["id" : id,
+                     "loc" : loc] as [String : Any]
+        
+        // firebase database reference of statickits
+        locationAngelsRef = Database.database().reference().child("userLocations")
+        
+        locationAngelsRef.setValue(id)
+        locationAngelsRef.child(id).setValue(loc)
         
     }
 }

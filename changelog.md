@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](	)
+## - 2017-11-28 - Yudhvir
+### Added
+- Firebase entries for location updating
 
 ## - 2017-11-03 - Kent Huang
 ### Added
