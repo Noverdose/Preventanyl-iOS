@@ -21,14 +21,28 @@ class StaticKit: NSObject {
     
     //used when getting data from firebase
     init?(From snapshot: DataSnapshot) {
-        guard let dict = snapshot.value as? [String:Any] else { return nil }
-        guard let adressObject = dict["address"] as? [String : String] else { return nil }
-        guard let comments = dict["comments"]  as? String else { return nil }
-        guard let coordinatesObject = dict["coordinates"] as? [String : Double] else { return nil }
-        guard let displayName = dict["displayName"]  as? String else { return nil }
-        guard let id = dict["id"]  as? String else { return nil }
-        guard let phone = dict["phone"]  as? String else { return nil }
-        guard let userId = dict["userId"]  as? String else { return nil }
+        guard let dict = snapshot.value as? [String:Any] else { print("dict is nil")
+            return nil }
+        guard let adressObject = dict["address"] as? [String : String] else {
+            print("adressObject is nil")
+            return nil }
+        let comments = dict["comments"]  as? String ?? ""
+        guard let coordinatesObject = dict["coordinates"] as? [String : Double] else {
+            print("coordinatesObject is nil")
+            return nil }
+        guard let displayName = dict["displayName"]  as? String else {
+            print("displayName is nil")
+            return nil }
+        guard let id = dict["id"]  as? String else {
+            print("id is nil")
+            return nil }
+        guard let phone = dict["phone"]  as? String else {
+            print("phone is nil")
+            return nil }
+        guard let userId = dict["userId"]  as? String else
+        {
+            print("userId is nil")
+            return nil }
     
         self.address  = Address(addressOJ: adressObject)
         self.coordinates = Coordinates(coorOJ: coordinatesObject)
@@ -37,6 +51,42 @@ class StaticKit: NSObject {
         self.id = id
         self.phone = phone
         self.userId = userId
+    }
+    
+    init(address: Address,
+         comments: String,
+         coordinates:Coordinates,
+         displayName:String,
+         id:String,
+         phone:String,
+         userId:String) {
+        self.address  = address
+        self.coordinates = coordinates
+        self.comments = comments
+        self.displayName = displayName
+        self.id = id
+        self.phone = phone
+        self.userId = userId
+    }
+    
+    //function to get the Address of the dictinary type to insert into the firebase database as json
+    func get_StaticKit_Dict_upload()-> Dictionary<String,Any> {
+        let addressDict = self.address.get_Address_Dict_upload()
+        let coorDict = coordinates.get_Coordinates_Dict_upload()
+        
+        
+        
+        let staticKit: [String:Any]  =
+            [   "address" : addressDict["address"]!,
+                "coordinates" : coorDict["coordinates"]!,
+             "comments" : comments,
+                "displayName": displayName,
+                "id" : id,
+                "phone" : phone,
+                "userId" : userId
+                ]
+        return staticKit
+        
     }
     
     override var description: String {
@@ -63,6 +113,30 @@ class Address :NSObject{
         postalCode = addressOJ["postalCode"]!
     }
     
+    init(city: String, country: String,postalCode : String,provincestate:String,streetAddress:String) {
+        self.streetAddress = streetAddress
+        self.city = city
+        self.provincestate = provincestate
+        self.country = country
+        self.postalCode = postalCode
+    }
+    
+    //function to get the Address of the dictinary type to insert into the firebase database as json
+    func get_Address_Dict_upload()-> Dictionary<String,Dictionary<String, String>> {
+        let address =
+            ["city" : city,
+             "country" : country,
+             "postalCode" : postalCode,
+             "provincestate":provincestate,
+             "streetAddress":streetAddress,
+            ]
+        let dict = ["address" : address]
+        return dict
+        
+    }
+    
+    
+    
     override var description: String {
         return "country: \(country)\n postalCode: \(postalCode)\n provincestate:\(provincestate)\n streetAddress: \(streetAddress)\n city: \(city)"
     }
@@ -84,5 +158,13 @@ class Coordinates: NSObject {
     
     override var description: String {
         return "lat : \(lat)\n long: \(long)"
+    }
+    
+    //function to get the coordinate of dictinary type to insert into the firebase database s
+    func get_Coordinates_Dict_upload()-> Dictionary<String,Dictionary<String, Double>> {
+        let coordinates = ["lat" : lat, "long" : long]
+        let dict = ["coordinates" : coordinates]
+        return dict
+        
     }
 }
