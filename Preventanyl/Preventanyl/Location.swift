@@ -176,7 +176,6 @@ class Location {
             (result : UIAlertAction) -> Void in
             print("OK")
         }
-    
         
         alertController.addAction(okAction)
         if let controller = viewController {
