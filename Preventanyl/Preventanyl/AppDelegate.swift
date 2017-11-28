@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     static var fcmtoken:String? = ""
 
+    public var overdoses = [Overdose]()
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -188,12 +190,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // custom code to handle push while app is in the foreground
         print("Handle push from foreground\(notification.request.content.userInfo)")
         
+        let infoDict = notification.request.content.userInfo as! NSDictionary
+        
         let dict = notification.request.content.userInfo["aps"] as! NSDictionary
+        
+        print(dict)
+        
         let d : [String : Any] = dict["alert"] as! [String : Any]
-        let body : String = d["body"] as! String
+        var body : String = d["body"] as! String
         let title : String = d["title"] as! String
+        
+        let alert = UIAlertController(title: title, message: body, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "Ignore", style: UIAlertActionStyle.cancel, handler: nil))
+
+        let region = infoDict["gcm.notification.region"] as? String ?? "Unknown region"
+        
+        if let latitude = infoDict["gcm.notification.latitude"] as? String, let longitude = infoDict["gcm.notification.longitude"] as? String {
+            body = "\(body) lat:\(latitude) long:\(longitude)"
+            
+            alert.addAction(UIAlertAction(title: "Show", style: UIAlertActionStyle.default, handler: { _ in
+                print("should direct to location now")
+                
+                // TODO finish this
+                
+                Notifications.post(messageName: "show_last_overdose", object: nil, userInfo: nil)
+
+                
+            }))
+            
+            
+            if let lat = Double(latitude), let long = Double(longitude) {
+                self.overdoses.append(Overdose(region: region, reportedTime: Date(), coordinates: CLLocationCoordinate2D(latitude: lat, longitude:  long)))
+                Notifications.post(messageName: "new_overdose", object: nil, userInfo: nil)
+            }
+            
+            
+            
+        }
+        
         print("Title:\(title) + body:\(body)")
-        self.showAlertAppDelegate(title: title,message:body,buttonTitle:"ok",window:self.window!)
+        //self.showAlertAppDelegate(title: title,message:body,buttonTitle:"OK",window:self.window!)
+        
+        
+        
+        self.window!.rootViewController?.present(alert, animated: false, completion: nil)
+        
+        
     }
     
     @available(iOS 10.0, *)
@@ -202,11 +245,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         print("Handle push from background or closed\(response.notification.request.content.userInfo)")
     }
     
-    func showAlertAppDelegate(title: String,message : String,buttonTitle: String,window: UIWindow){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.default, handler: nil))
-        window.rootViewController?.present(alert, animated: false, completion: nil)
-    }
+//    func showAlertAppDelegate(title: String,message : String,buttonTitle: String,window: UIWindow){
+//        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+//        alert.addAction(UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.default, handler: nil))
+//        window.rootViewController?.present(alert, animated: false, completion: nil)
+//    }
     // Firebase ended here
     
 }

@@ -91,6 +91,25 @@ class FirstViewController: UIViewController {
         print("The point is inside  the polygon: \(Raycast.isInside(point: point, polygon: poly))")
         print("The point is inside  the polygon: \(Raycast.isInside(point: p2, polygon: poly))")
         addMapTrackingButton()
+        
+    
+        Notifications.addObserver(messageName: "new_overdose", object: nil) {_ in
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+            if let overdose = appDelegate.overdoses.last {
+                self.addOverdose(overdose)
+            }
+        }
+        
+        Notifications.addObserver(messageName: "show_last_overdose", object: nil) {_ in
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            if let overdose = appDelegate.overdoses.last {
+                self.centerMapOnLocation(location: CLLocation(latitude: overdose.coordinates.latitude, longitude: overdose.coordinates.longitude))
+            }
+        }
+        
+        
     }
     
     func updateUserLocation(location: CLLocation) {
@@ -211,12 +230,62 @@ class FirstViewController: UIViewController {
             
         })
         
-        addDummyData()
+        // addDummyData()
         
     }
     
     
+    func addOverdose(_ overdoseObject: Overdose) {
+        
+        let location = overdoseObject.coordinates
+        
+        print("addOverdose()")
+        DispatchQueue.main.async {
+            print("adding overdose from \(overdoseObject.region) to map")
+            
+            
+//            let userCoordinate = self.selfAnnotation?.coordinate ?? CLLocationCoordinate2D(latitude: 49.205323, longitude: -122.930271)
+//
+//            let fakeOverdose1 = OverdoseAnnotation()
+//            fakeOverdose1.coordinate = CLLocationCoordinate2D(latitude: userCoordinate.latitude + 0.07, longitude: userCoordinate.longitude + 0.04)
+
+            let overdose = OverdoseAnnotation()
+            overdose.coordinate = location
+
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "h:mm a"
+
+            let hhmm = dateFormatter.string(from: Date())
+            overdose.title = "Reported Overdose at (\(hhmm))"
+            
     
+            
+            self.MapView.addAnnotation(overdose)
+            //let overdose1View = self.MapView.view(for: fakeOverdose1)
+            
+//            let message = "Overdose reported in \(overdoseObject.region)!"
+//            let alertController = UIAlertController(title: "New Overdose", message: message, preferredStyle: UIAlertControllerStyle.alert) //Replace UIAlertControllerStyle.Alert by
+//
+//            let cancelAction = UIAlertAction(title: "Ignore", style: UIAlertActionStyle.default) {
+//                (result : UIAlertAction) -> Void in
+//                print("Cancel")
+//            }
+//
+//            let showAction = UIAlertAction(title: "Show", style: UIAlertActionStyle.default) {
+//                (result : UIAlertAction) -> Void in
+//                print("Show")
+//                self.centerMapOnLocation(location: CLLocation(latitude: overdose.coordinate.latitude, longitude: overdose.coordinate.longitude))
+//
+//            }
+//
+//            alertController.addAction(cancelAction)
+//            alertController.addAction(showAction)
+//            self.present(alertController, animated: true, completion: nil)
+//
+            
+            //    }
+        }
+    }
     
     func addDummyData() {
         
