@@ -207,14 +207,14 @@ class Location {
         let loc = ["lat" : location.coordinate.latitude,
                    "lng" : location.coordinate.longitude] as [String : Any]
         
-        let value = ["id" : id,
+        let value = ["id" : AppDelegate.fcmtoken,
                      "loc" : loc] as [String : Any]
         
         // firebase database reference of statickits
         locationAngelsRef = Database.database().reference().child("userLocations")
         
         locationAngelsRef.setValue(id)
-        locationAngelsRef.child(id).setValue(loc)
+        locationAngelsRef.child(id).setValue(value)
         
     }
 }

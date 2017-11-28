@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     // let center = UNUserNotificationCenter.current()
 
     private var startTime: Date? //An instance variable, will be used as a previous location time.
+    
+    static var fcmtoken = ""
 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -57,6 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 self.locationManager.requestLocation()
             }
         } */
+        // AppDelegate.token = Messaging.messaging().fcmToken
+        // print("FCM token: \(token ?? "")")
+        AppDelegate.fcmtoken = Messaging.messaging().fcmToken!
+        
         return true
     }
     
@@ -159,7 +165,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         for i in 0..<deviceToken.count {
             token = token + String (format: "%02.2hhx", arguments: [deviceToken[i]])
         }
+        
         print ("Registration succeeded! Token: ", token);
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("Firebase registration token: \(fcmToken)")
+        AppDelegate.fcmtoken = fcmToken
+        print ("TOKEN : " + fcmToken)
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {

@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](	)
 ## - 2017-11-28 - Yudhvir
 ### Added
+- Added FCM Token support
+- Static token, used for angels for backend and firebase
+
+## - 2017-11-28 - Yudhvir
+### Added
 - Dismiss keyboard login
 
 ## - 2017-11-28 - Yudhvir
