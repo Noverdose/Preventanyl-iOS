@@ -28,12 +28,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         self.email.delegate = self
         
         self.password.delegate = self
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
         
     }
     
@@ -167,6 +167,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate  {
         
         //self.password.becomeFirstResponder()
         return true
+    }
+    
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        email.resignFirstResponder()
+        password.resignFirstResponder()
     }
     
     
