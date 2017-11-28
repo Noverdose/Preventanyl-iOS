@@ -20,7 +20,6 @@ class Location {
     static let REQUESTED_INUSE_AUTHORIZATION = "REQUESTED_INUSE_AUTHORIZATION"
     static let TRACK_ME_AT_ALL_TIMES = "trackMeAtAllTimes"
     static var currentLocation = CLLocation()
-    static var id = String(arc4random())
     
     // firebase database refs
     lazy var ref: DatabaseReference = Database.database().reference()
@@ -207,14 +206,20 @@ class Location {
         let loc = ["lat" : location.coordinate.latitude,
                    "lng" : location.coordinate.longitude] as [String : Any]
         
+        
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
         let value = ["id" : AppDelegate.fcmtoken,
                      "loc" : loc] as [String : Any]
+        
         
         // firebase database reference of statickits
         locationAngelsRef = Database.database().reference().child("userLocations")
         
-        locationAngelsRef.setValue(id)
-        locationAngelsRef.child(id).setValue(value)
+        locationAngelsRef.setValue(uid)
+        locationAngelsRef.child(AppDelegate.fcmtoken).setValue(value)
         
     }
 }

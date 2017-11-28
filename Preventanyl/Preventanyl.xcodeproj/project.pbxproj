@@ -37,6 +37,7 @@
 		B9B302161F7E1E0300C5FD04 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B302151F7E1E0200C5FD04 /* MapKit.framework */; };
 		B9B302181F7E2B5E00C5FD04 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B302171F7E2B5E00C5FD04 /* Marker.swift */; };
 		B9B3021A1F7E2DF600C5FD04 /* VCMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B302191F7E2DF600C5FD04 /* VCMapView.swift */; };
+		B9FACD7B1FCD8D42002353EE /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FACD7A1FCD8D42002353EE /* Networking.swift */; };
 		DDE3DDC875905F3211F604D7 /* Pods_PreventanylUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A29B8ADB64CEFA225F9029EF /* Pods_PreventanylUITests.framework */; };
 		E9FF81FA1FC8D7EC00411F12 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FF81F91FC8D7EC00411F12 /* LoginViewController.swift */; };
 		E9FF81FC1FCA453500411F12 /* KitItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FF81FB1FCA453500411F12 /* KitItemTableViewCell.swift */; };
@@ -103,6 +104,7 @@
 		B9B302171F7E2B5E00C5FD04 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		B9B302191F7E2DF600C5FD04 /* VCMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCMapView.swift; sourceTree = "<group>"; };
 		B9E963841FBF79C1004B1ED6 /* Preventanyl.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Preventanyl.entitlements; sourceTree = "<group>"; };
+		B9FACD7A1FCD8D42002353EE /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		D2353CA4DBCF99D64B8E0622 /* Pods-PreventanylUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PreventanylUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PreventanylUITests/Pods-PreventanylUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E9FF81F91FC8D7EC00411F12 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E9FF81FB1FCA453500411F12 /* KitItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				4745D62E1FA5378D00CD90C1 /* StaticKit.swift */,
+				B9FACD7A1FCD8D42002353EE /* Networking.swift */,
 			);
 			path = FirebaseObject;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				473DA4E61FACFE220035AEED /* PhoneLoginViewController.swift in Sources */,
+				B9FACD7B1FCD8D42002353EE /* Networking.swift in Sources */,
 				475E5DEA1F9166A300CF82E0 /* Userinfo.swift in Sources */,
 				545A89531FA6A87300BB73CD /* OverdoseAnnotation.swift in Sources */,
 				546AEEE71FA3EC92007DD24B /* Notifications.swift in Sources */,
