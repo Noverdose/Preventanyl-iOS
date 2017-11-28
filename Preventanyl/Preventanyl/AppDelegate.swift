@@ -189,10 +189,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         let dict = notification.request.content.userInfo["aps"] as! NSDictionary
         let d : [String : Any] = dict["alert"] as! [String : Any]
-        let body : String = d["body"] as! String
+        var body : String = d["body"] as! String
         let title : String = d["title"] as! String
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "Ignore", style: UIAlertActionStyle.cancel, handler: nil))
+
+        
+        if let latitude = d["latitude"] as? String, let longitude = d["longitude"] as? String {
+            body = "\(body) lat:\(latitude) long:\(longitude)"
+            alert.addAction(UIAlertAction(title: "Show", style: UIAlertActionStyle.default, handler: {
+                print("should direct to location now")
+            }))
+        }
+        
         print("Title:\(title) + body:\(body)")
-        self.showAlertAppDelegate(title: title,message:body,buttonTitle:"ok",window:self.window!)
+        //self.showAlertAppDelegate(title: title,message:body,buttonTitle:"OK",window:self.window!)
+        
+        
+        
+        
+        window.rootViewController?.present(alert, animated: false, completion: nil)
+        
+        
     }
     
     @available(iOS 10.0, *)
@@ -201,11 +221,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         print("Handle push from background or closed\(response.notification.request.content.userInfo)")
     }
     
-    func showAlertAppDelegate(title: String,message : String,buttonTitle: String,window: UIWindow){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.default, handler: nil))
-        window.rootViewController?.present(alert, animated: false, completion: nil)
-    }
+//    func showAlertAppDelegate(title: String,message : String,buttonTitle: String,window: UIWindow){
+//        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+//        alert.addAction(UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.default, handler: nil))
+//        window.rootViewController?.present(alert, animated: false, completion: nil)
+//    }
     // Firebase ended here
     
 }
