@@ -190,6 +190,12 @@ class Location {
     // decide what to do with the new location. Depends if this user has a moving Naloxone kit
     static func updateUser(location: CLLocation) {
         
+        if AppDelegate.fcmtoken == "" {
+            AppDelegate.fcmtoken = Messaging.messaging().fcmToken
+        }
+        
+        print ("token : \(AppDelegate.fcmtoken ?? "")")
+        
         let date = Date()// Aug 25, 2017, 11:55 AM
         let calendar = Calendar.current
         
@@ -218,8 +224,10 @@ class Location {
         // firebase database reference of statickits
         locationAngelsRef = Database.database().reference().child("userLocations")
         
-        locationAngelsRef.setValue(uid)
-        locationAngelsRef.child(AppDelegate.fcmtoken).setValue(value)
+        // locationAngelsRef.setValue(uid)
+        locationAngelsRef.child(uid).updateChildValues(value)
+        
+        // locationAngelsRef.child(uid)
         
     }
 }
