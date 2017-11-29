@@ -159,6 +159,7 @@
 		4745D62D1FA5376000CD90C1 /* FirebaseObject */ = {
 			isa = PBXGroup;
 			children = (
+				545EA4E81FCE03A60048ED58 /* Overdose.swift */,
 				4745D62E1FA5378D00CD90C1 /* StaticKit.swift */,
 				B9FACD7A1FCD8D42002353EE /* Networking.swift */,
 			);
@@ -227,7 +228,6 @@
 				4745D6301FA53B1600CD90C1 /* GoogleService-Info.plist */,
 				4745D62D1FA5376000CD90C1 /* FirebaseObject */,
 				546AEEE41FA3EC92007DD24B /* Location.swift */,
-				545EA4E81FCE03A60048ED58 /* Overdose.swift */,
 				546AEEE51FA3EC92007DD24B /* Notifications.swift */,
 				B91802361F7DD27D000C5246 /* AppDelegate.swift */,
 				478918311F90B49B00450F21 /* MainTabBarViewController.swift */,

@@ -6,6 +6,9 @@
 //  Copyright © 2017 Yudhvir Raj. All rights reserved.
 //
 
+// TODO: Remove & re-add all overdoses on load
+
+
 import UIKit
 import MapKit
 import CoreLocation
@@ -27,7 +30,9 @@ class FirstViewController: UIViewController {
     // var marker: Marker?
     var selfAnnotation: MKPointAnnotation?
     
-    var staticKitMarkerMap: Dictionary<Int32, Marker> = Dictionary<Int32, Marker>()
+    var staticKitMarkerMap: Dictionary<String, Marker> = Dictionary<String, Marker>()
+    var overdoseMarkerMap : Dictionary<String, OverdoseAnnotation> = Dictionary<String, OverdoseAnnotation>()
+
     
     static var loadedDummyOverdoses = 0
     
@@ -38,13 +43,20 @@ class FirstViewController: UIViewController {
     // all the static kits
     var allStaticKits: [StaticKit]!
     
+    var overdosesRef: DatabaseReference!
+    
+    //var overdoses: [Overdose]!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         MapView.delegate = self
         
+        
         // firebase database reference of statickits
         staticKitsRef = ref.child("statickits")
+        overdosesRef  = ref.child("overdoses")
         
         // Do any additional setup after loading the view, typically from a nib.
         // set initlial location in Honolulu
@@ -54,6 +66,8 @@ class FirstViewController: UIViewController {
         observer = Notifications.addObserver(messageName: Location.LOCATION_CHANGED, object: nil) { _ in
             self.updateUserLocation(location: Location.currentLocation)
         }
+        
+        
         
         Location.startLocationUpdatesWhenInUse(caller: self)
         var coord: CLLocationCoordinate2D!
@@ -93,15 +107,15 @@ class FirstViewController: UIViewController {
         addMapTrackingButton()
         
     
-        Notifications.addObserver(messageName: "new_overdose", object: nil) {_ in
+        let _ = Notifications.addObserver(messageName: "new_overdose", object: nil) {_ in
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
             if let overdose = appDelegate.overdoses.last {
-                self.addOverdose(overdose)
+                //self.addOverdose(overdose)
             }
         }
         
-        Notifications.addObserver(messageName: "show_last_overdose", object: nil) {_ in
+        let _ = Notifications.addObserver(messageName: "show_last_overdose", object: nil) {_ in
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             
             if let overdose = appDelegate.overdoses.last {
@@ -144,6 +158,17 @@ class FirstViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
+        
+        initStaticKits()
+        
+        initOverdoses()
+        
+        
+        // addDummyData()
+        
+    }
+    
+    func initStaticKits() {
         allStaticKits = [StaticKit]()
         
         // Listen for new staticKits in the Firebase database
@@ -156,25 +181,38 @@ class FirstViewController: UIViewController {
             if let addedskit = StaticKit(From: snapshot) {
                 
                 
-                guard let id = Int32(addedskit.id) else {
-                    print("kit id (\(addedskit.id)) is not an int! Skipping!")
-                    return
-                }
+//                guard let id = Int32(addedskit.id) else {
+//                    print("kit id (\(addedskit.id)) is not an int! Skipping!")
+//                    return
+//                }
+                
+                
                 
                 self?.allStaticKits.append(addedskit)
                 
                 let newMarker = Marker (title: addedskit.displayName,
                                         locationName: "\(addedskit.address.streetAddress) \(addedskit.address.city)",
-                                        discipline: "Static Kit",
-                                        coordinate: CLLocationCoordinate2D(latitude: addedskit.coordinates.lat, longitude: addedskit.coordinates.long))
+                    discipline: "Static Kit",
+                    coordinate: CLLocationCoordinate2D(latitude: addedskit.coordinates.lat, longitude: addedskit.coordinates.long))
                 self?.MapView.addAnnotation(newMarker)
-                self?.staticKitMarkerMap[id] = newMarker
+                self?.staticKitMarkerMap[addedskit.id] = newMarker
                 
                 //debug info
                 print("start printing\n")
                 print(addedskit)
                 print("\(self?.allStaticKits.count ?? -1)")
             }
+            
+            
+            // prolly wanna remove this after we refer to firebase db
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            for overdose in appDelegate.overdoses {
+                self?.addOverdose(overdose)
+            }
+            
+            
             
         })
         
@@ -198,11 +236,11 @@ class FirstViewController: UIViewController {
                 print("childRemoved: Unable to parse Kit from firebase!")
                 return
             }
-            guard let id = Int32(kit.id) else {
-                print("Invalid id not an int: (\(kit.id)). Unable to remove!")
-                return
-            }
-            self?.staticKitMarkerMap.removeValue(forKey: id)
+//            guard let id = Int32(kit.id) else {
+//                print("Invalid id not an int: (\(kit.id)). Unable to remove!")
+//                return
+//            }
+            self?.staticKitMarkerMap.removeValue(forKey: kit.id)
             if let index = self?.allStaticKits.index(where: {$0.userId == rmuid}) {
                 self?.allStaticKits.remove(at: index)
             }
@@ -222,69 +260,157 @@ class FirstViewController: UIViewController {
             // add back
             if let addedskit = StaticKit(From: snapshot) {
                 self?.allStaticKits.append(addedskit)
-//                print("start printing\n")
-//                print(addedskit)
-//                print("\(self?.allStaticKits.count ?? -1)")
+                //                print("start printing\n")
+                //                print(addedskit)
+                //                print("\(self?.allStaticKits.count ?? -1)")
             }
             
             
         })
-        
-        // addDummyData()
-        
     }
     
     
-    func addOverdose(_ overdoseObject: Overdose) {
+    func initOverdoses() {
+        //overdoses = [Overdose]()
         
-        let location = overdoseObject.coordinates
-        
-        print("addOverdose()")
-        DispatchQueue.main.async {
-            print("adding overdose from \(overdoseObject.region) to map")
+        // Listen for new staticKits in the Firebase database
+        // it is aysn.kits will be added one by one;
+        //
+        overdosesRef.observe(.childAdded, with: {[weak self] (snapshot) -> Void in
+            
+            print("overDoses: childAdded")
+            
+            if let addedOverdose = Overdose(From: snapshot) {
+                self?.addOverdose(addedOverdose)
+            } else {
+                
+                print("error! overdose from snapshot not parseable!")
+                print(snapshot)
+            }
             
             
-//            let userCoordinate = self.selfAnnotation?.coordinate ?? CLLocationCoordinate2D(latitude: 49.205323, longitude: -122.930271)
+            // prolly wanna remove this after we refer to firebase db
+            
+//            let appDelegate = UIApplication.shared.delegate as! AppDelegate
 //
-//            let fakeOverdose1 = OverdoseAnnotation()
-//            fakeOverdose1.coordinate = CLLocationCoordinate2D(latitude: userCoordinate.latitude + 0.07, longitude: userCoordinate.longitude + 0.04)
-
+//            for overdose in appDelegate.overdoses {
+//                self?.addOverdose(overdose)
+//            }
+//
+            
+            
+        })
+        
+        // Listen for deleted staticKits in the Firebase database
+        overdosesRef.observe(.childRemoved, with: { [weak self] (snapshot) -> Void in
+            
+            print("overdoses childRemoved")
+            
+            guard let overdose = Overdose(From: snapshot) else {
+                return
+            }
+            
+            let id: String = overdose.id
+            
+            if let marker = self?.overdoseMarkerMap[id] {
+                self?.overdoseMarkerMap.removeValue(forKey: id)
+                self?.MapView.removeAnnotation(marker)
+            }
+//            }
+//
+//    
+//
+//
+//
+//
+//            self?.overdoseMarkerMap.removeValue(forKey: id)
+//            if let index = self?.allStaticKits.index(where: {$0.userId == rmuid}) {
+//                self?.allStaticKits.remove(at: index)
+//            }
+        })
+        
+        
+        // Listen for deleted staticKits in the Firebase database
+        overdosesRef.observe(.childChanged, with: { [weak self] (snapshot) -> Void in
+            
+            print("overdoses: childChanged")
+            
+            guard let overdose = Overdose(From: snapshot) else {
+                return
+            }
+            
+            let id = overdose.id
+            
+            // remove
+            if let marker = self?.overdoseMarkerMap[id] {
+                self?.overdoseMarkerMap.removeValue(forKey: id)
+                self?.MapView.removeAnnotation(marker)
+            }
+            
+            // add back
+                //self?.allStaticKits.append(addedskit)
+            
+            self?.addOverdose(overdose)
+            
+                //                print("start printing\n")
+                //                print(addedskit)
+                //                print("\(self?.allStaticKits.count ?? -1)")
+            
+         
+            
+            
+        })
+    }
+    
+    func addOverdose(_ addedOverdose: Overdose) {
+    
+        let location = addedOverdose.coordinates
+        
+        DispatchQueue.main.async {
+            print("adding overdose from \(addedOverdose.region ?? "Unknown") to map")
+            
+            
+            //            let userCoordinate = self.selfAnnotation?.coordinate ?? CLLocationCoordinate2D(latitude: 49.205323, longitude: -122.930271)
+            //
+            //            let fakeOverdose1 = OverdoseAnnotation()
+            //            fakeOverdose1.coordinate = CLLocationCoordinate2D(latitude: userCoordinate.latitude + 0.07, longitude: userCoordinate.longitude + 0.04)
+            
+            let id = addedOverdose.id
+            
             let overdose = OverdoseAnnotation()
             overdose.coordinate = location
-
+            
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "h:mm a"
-
-            let hhmm = dateFormatter.string(from: Date())
+            
+            let hhmm = dateFormatter.string(from: addedOverdose.reportedTime)
             overdose.title = "Reported Overdose at (\(hhmm))"
             
-    
             
+            self.overdoseMarkerMap[id] = overdose
             self.MapView.addAnnotation(overdose)
-            //let overdose1View = self.MapView.view(for: fakeOverdose1)
-            
-//            let message = "Overdose reported in \(overdoseObject.region)!"
-//            let alertController = UIAlertController(title: "New Overdose", message: message, preferredStyle: UIAlertControllerStyle.alert) //Replace UIAlertControllerStyle.Alert by
-//
-//            let cancelAction = UIAlertAction(title: "Ignore", style: UIAlertActionStyle.default) {
-//                (result : UIAlertAction) -> Void in
-//                print("Cancel")
-//            }
-//
-//            let showAction = UIAlertAction(title: "Show", style: UIAlertActionStyle.default) {
-//                (result : UIAlertAction) -> Void in
-//                print("Show")
-//                self.centerMapOnLocation(location: CLLocation(latitude: overdose.coordinate.latitude, longitude: overdose.coordinate.longitude))
-//
-//            }
-//
-//            alertController.addAction(cancelAction)
-//            alertController.addAction(showAction)
-//            self.present(alertController, animated: true, completion: nil)
-//
-            
-            //    }
         }
+        
+        //self.overdoses.append(addedOverdose)
+        //self?.addOverdose(addedOverdose)
+        
+        //                let time = addedOverdose.reportedTime
+        //
+        //                let title = "Reported Overdose at  "
+        //
+        //                let newMarker = Marker (title: addedOverdose.displayName,
+        //                                        locationName: "\(addedOverdose.address.streetAddress) \(addedOverdose.address.city)",
+        //                    discipline: "Overdose",
+        //                    coordinate: CLLocationCoordinate2D(latitude: addedOverdose.coordinates.lat, longitude: addedOverdose.coordinates.long))
+        //                self?.MapView.addAnnotation(newMarker)
+        //                self?.staticKitMarkerMap[id] = newMarker
+        //
+        //debug info
+        print("start printing\n")
+        print(addedOverdose)
+        //print("\(self.overdoses.count ?? -1)")
+    
+        
     }
     
     func addDummyData() {
@@ -377,20 +503,44 @@ class FirstViewController: UIViewController {
     
     func sendAngels () {
         stopTimer ()
-        print ("https://preventanyl.com/regionfinder.php?lat=\(Location.currentLocation.coordinate.latitude)&long=\(Location.currentLocation.coordinate.longitude)")
-        if let url = URL(string: "https://preventanyl.com/regionfinder.php?lat=\(Location.currentLocation.coordinate.latitude)&long=\(Location.currentLocation.coordinate.longitude)") {
+        
+        let coordinates = Location.currentLocation.coordinate
+        
+        let overdose = Overdose(region: nil, reportedTime: Date(), coordinates:
+            CLLocationCoordinate2D(latitude: coordinates.latitude, longitude: coordinates.longitude))
+        
+        
+        print ("https://preventanyl.com/regionfinder.php?id=\(overdose.id)&lat=\(Location.currentLocation.coordinate.latitude)&long=\(Location.currentLocation.coordinate.longitude)")
+        if let url = URL(string: "https://preventanyl.com/regionfinder.php?id=\(overdose.id)&lat=\(Location.currentLocation.coordinate.latitude)&long=\(Location.currentLocation.coordinate.longitude)") {
             var request = URLRequest(url: url)
             request.setValue("Preventanyl App", forHTTPHeaderField: "User-Agent")
             
             let task = URLSession.shared.dataTask(with: request) {data, response, error in
                 
-                print (error)
+                print (error as Any?)
                 
                 if let data = data {
                     print (data)
                     // data is a response string
                 }
             }
+            
+           
+            
+            var d = DateFormatter()
+                d.dateFormat = "yyyy-MM-dd"
+            
+            
+            let value = ["id" : overdose.id,
+                         "date" : d.string(from: overdose.reportedTime),
+                         "timestamp" : overdose.reportedTime.timeIntervalSince1970,
+                         "latitude" : coordinates.latitude,
+                         "longitude" : coordinates.longitude
+                ] as [String : Any]
+            
+            
+            print("\nAdding overdose child:\(overdose.id)\n")
+            overdosesRef.child(overdose.id).updateChildValues(value)
             
             task.resume()
         }
