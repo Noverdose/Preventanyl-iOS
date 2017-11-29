@@ -110,7 +110,7 @@ extension FirstViewController: MKMapViewDelegate {
     func addMapTrackingButton(){
         let button   = UIButton(type: UIButtonType.custom) as UIButton
         button.frame = CGRect(origin: CGPoint(x:5, y: 25), size: CGSize(width: 35, height: 35))
-        button.setImage(#imageLiteral(resourceName: "first"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "location"), for: .normal)
         button.backgroundColor = .clear
         button.addTarget(self, action: #selector(FirstViewController.centerMapOnUserButtonClicked), for:.touchUpInside)
         MapView.addSubview(button)
