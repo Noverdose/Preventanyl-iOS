@@ -22,19 +22,19 @@ class RegisterKitViewController: FormViewController {
             <<< TextRow() {
                 $0.tag = "CityRow"
                 $0.title = "City"
-                $0.placeholder = "Coventry"
+                $0.placeholder = "Burnaby"
             }
             // Country Row
             <<< TextRow() {
                 $0.tag = "CountryRow"
                 $0.title = "Country"
-                $0.placeholder = "England"
+                $0.placeholder = "Canada"
             }
             // Postal Code Row
             <<< TextRow() {
                 $0.tag = "PostalRow"
                 $0.title = "Post Code"
-                $0.placeholder = "ABC 123"
+                $0.placeholder = "V5G 3H2"
             }
             // Province Row
             <<< TextRow() {
@@ -46,14 +46,14 @@ class RegisterKitViewController: FormViewController {
             <<< TextRow() {
                 $0.tag = "AddressRow"
                 $0.title = "Street Address"
-                $0.placeholder = "1234 Cool Avenue"
+                $0.placeholder = "3700 Willingdom Avenue"
             }
             // Display Information
             +++ Section("Display Information")
             <<< TextRow() {
                 $0.tag = "DNameRow"
                 $0.title = "Display Name"
-                $0.placeholder = "Cool Club"
+                $0.placeholder = "BCIT Burnaby"
             }
             // Phone Number Rows
             <<< PhoneRow() {
