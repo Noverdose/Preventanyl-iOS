@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -69,7 +69,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="dpf-h1-Gxx"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Register Kit" id="ZXa-h9-Wt6"/>
+                    <tabBarItem key="tabBarItem" title="Register Kit" image="address-book" selectedImage="address-book" id="ZXa-h9-Wt6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffk-G0-cWY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -593,6 +593,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="address-book" width="30" height="30"/>
         <image name="map" width="30" height="30"/>
         <image name="profile" width="30" height="30"/>
     </resources>
